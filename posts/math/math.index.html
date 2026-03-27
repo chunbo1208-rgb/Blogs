@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mathematics — Chunbo Liu</title>
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body,{delimiters:[
+      {left:'$$',right:'$$',display:true},
+      {left:'$',right:'$',display:false}
+    ]})"></script>
+
+  <style>
+    /* ── Math page: branch grid ── */
+    .branches {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 0.6rem;
+      margin: 1rem 0 2.5rem;
+    }
+    .branch {
+      padding: 0.7rem 1rem;
+      border: 1px solid #d8d4cc;
+      border-radius: 3px;
+      background: #faf9f5;
+      cursor: pointer;
+      font-family: Georgia, serif;
+      font-size: 0.88rem;
+      color: #444;
+      text-align: left;
+      transition: background 0.12s, border-color 0.12s;
+    }
+    .branch:hover { background: #f0ede5; border-color: #b0a898; }
+    .branch.active { background: #8a7a6a; color: #fff; border-color: #8a7a6a; }
+    .branch .branch-count {
+      display: block;
+      font-size: 0.7rem;
+      font-family: "Courier New", monospace;
+      margin-top: 0.15rem;
+      opacity: 0.65;
+    }
+
+    /* ── Recent / filtered list ── */
+    #show-more {
+      font-size: 0.78rem;
+      font-family: "Courier New", monospace;
+      color: #8a7a6a;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      margin-top: 0.5rem;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    #show-more:hover { color: #444; }
+
+    /* ── Section heading row ── */
+    .section-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.7rem;
+    }
+    .filter-label {
+      font-size: 0.75rem;
+      font-family: "Courier New", monospace;
+      color: #aaa;
+    }
+    #clear-filter {
+      font-size: 0.72rem;
+      font-family: "Courier New", monospace;
+      color: #8a7a6a;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      display: none;
+    }
+    #clear-filter:hover { color: #444; }
+  </style>
+
+  <!-- ════════════════════════════════════════════════════════
+       MATH POSTS REGISTRY — add ONE line per new post.
+
+       Fields:
+         date         "YYYY-MM-DD"   required
+         math_subject "Analysis" | "Algebra" | "Linear Algebra" |
+                      "Probability" | "Topology" | "Geometry" | ""
+                      (empty string → appears under Others)
+         href         "filename.html"   relative to this folder
+         title        "..."
+  ════════════════════════════════════════════════════════ -->
+  <script>
+  const MATH_POSTS = [
+    { date:"2026-03-27", math_subject:"Analysis", href:"introduction.html", title:"Introduction" },
+  ];
+  </script>
+</head>
+<body>
+
+<header>
+  <a class="back" href="../../index.html">← home</a>
+  <h1>Mathematics</h1>
+</header>
+
+<main>
+
+  <!-- ── Branch navigation ── -->
+  <section>
+    <h2>Branches</h2>
+    <div class="branches" id="branch-grid"></div>
+  </section>
+
+  <!-- ── Post list (recent / filtered) ── -->
+  <section>
+    <div class="section-row">
+      <h2 id="list-heading">Recent Posts</h2>
+      <span class="filter-label" id="filter-label"></span>
+      <button id="clear-filter" onclick="clearFilter()">× clear</button>
+    </div>
+    <ul class="post-list" id="post-list"></ul>
+    <p class="no-posts" id="no-posts" hidden>No posts here yet.</p>
+    <button id="show-more" hidden onclick="showAll()">show all →</button>
+  </section>
+
+</main>
+
+<footer>
+  <p><a href="../../index.html">← home</a></p>
+</footer>
+
+<script>
+  // ── Config ───────────────────────────────────────────────
+  const BRANCHES = [
+    "Analysis", "Algebra", "Linear Algebra",
+    "Probability", "Topology", "Geometry","Others"
+  ];
+  const RECENT_LIMIT = 5;
+
+  // ── State ────────────────────────────────────────────────
+  let activeFilter = null;   // null = show all/recent
+  let showingAll   = false;
+
+  // ── Click tracking (shared with index.html) ───────────────
+  function getClicks(href) {
+    // Normalize to root-relative for shared storage
+    const key = 'clicks:posts/math/' + href;
+    return parseInt(localStorage.getItem(key) || '0');
+  }
+  function trackClick(href) {
+    const key = 'clicks:posts/math/' + href;
+    localStorage.setItem(key, getClicks(href) + 1);
+  }
+
+  // ── Build a <li> ─────────────────────────────────────────
+  function buildItem(post) {
+    const li = document.createElement('li');
+
+    const t = document.createElement('time');
+    t.setAttribute('datetime', post.date);
+    t.textContent = post.date;
+    li.appendChild(t);
+
+    if (post.math_subject) {
+      const s = document.createElement('span');
+      s.className = 'subject';
+      s.textContent = post.math_subject;
+      s.style.cursor = 'pointer';
+      s.addEventListener('click', e => { e.preventDefault(); setFilter(post.math_subject); });
+      li.appendChild(s);
+    }
+
+    const a = document.createElement('a');
+    a.href = post.href;
+    a.textContent = post.title;
+    a.addEventListener('click', () => trackClick(post.href));
+    li.appendChild(a);
+
+    const clicks = getClicks(post.href);
+    if (clicks > 0) {
+      const c = document.createElement('span');
+      c.className = 'clicks';
+      c.textContent = clicks + (clicks === 1 ? ' view' : ' views');
+      li.appendChild(c);
+    }
+
+    return li;
+  }
+
+  // ── Render post list ─────────────────────────────────────
+  function renderList() {
+    const list   = document.getElementById('post-list');
+    const noMsg  = document.getElementById('no-posts');
+    const moreBtn= document.getElementById('show-more');
+    const heading= document.getElementById('list-heading');
+    const label  = document.getElementById('filter-label');
+    const clrBtn = document.getElementById('clear-filter');
+
+    list.innerHTML = '';
+    noMsg.hidden = true;
+    moreBtn.hidden = true;
+
+    // Sort newest first
+    let posts = [...MATH_POSTS].sort((a, b) => b.date.localeCompare(a.date));
+
+    if (activeFilter === 'Others') {
+      posts = posts.filter(p => !p.math_subject);
+      heading.textContent = 'Posts';
+      label.textContent = 'Others';
+      clrBtn.style.display = 'inline';
+    } else if (activeFilter) {
+      posts = posts.filter(p => p.math_subject === activeFilter);
+      heading.textContent = 'Posts';
+      label.textContent = activeFilter;
+      clrBtn.style.display = 'inline';
+    } else {
+      heading.textContent = 'Recent Posts';
+      label.textContent = '';
+      clrBtn.style.display = 'none';
+    }
+
+    if (posts.length === 0) {
+      noMsg.hidden = false;
+      return;
+    }
+
+    const visible = (!activeFilter && !showingAll) ? posts.slice(0, RECENT_LIMIT) : posts;
+    visible.forEach(p => list.appendChild(buildItem(p)));
+
+    if (!activeFilter && !showingAll && posts.length > RECENT_LIMIT) {
+      moreBtn.textContent = 'show all ' + posts.length + ' posts →';
+      moreBtn.hidden = false;
+    }
+  }
+
+  // ── Branch grid ──────────────────────────────────────────
+  function renderBranches() {
+    const grid = document.getElementById('branch-grid');
+    grid.innerHTML = '';
+
+    const allBranches = [...BRANCHES];
+
+    // Count "Others"
+    const othersCount = MATH_POSTS.filter(p => !p.math_subject).length;
+
+    allBranches.forEach(branch => {
+      const count = MATH_POSTS.filter(p => p.math_subject === branch).length;
+      const btn = document.createElement('button');
+      btn.className = 'branch' + (activeFilter === branch ? ' active' : '');
+      btn.innerHTML = branch + '<span class="branch-count">' + count + ' post' + (count !== 1 ? 's' : '') + '</span>';
+      btn.addEventListener('click', () => setFilter(branch));
+      grid.appendChild(btn);
+    });
+
+    // Others button
+    if (othersCount > 0) {
+      const btn = document.createElement('button');
+      btn.className = 'branch' + (activeFilter === 'Others' ? ' active' : '');
+      btn.innerHTML = 'Others<span class="branch-count">' + othersCount + ' post' + (othersCount !== 1 ? 's' : '') + '</span>';
+      btn.addEventListener('click', () => setFilter('Others'));
+      grid.appendChild(btn);
+    }
+  }
+
+  function setFilter(branch) {
+    activeFilter  = branch;
+    showingAll    = false;
+    renderBranches();
+    renderList();
+  }
+
+  function clearFilter() {
+    activeFilter = null;
+    showingAll   = false;
+    renderBranches();
+    renderList();
+  }
+
+  function showAll() {
+    showingAll = true;
+    renderList();
+  }
+
+  // ── Init ─────────────────────────────────────────────────
+  renderBranches();
+  renderList();
+</script>
+
+</body>
+</html>
