@@ -34,7 +34,8 @@ let currentLang = localStorage.getItem('chunboblog:lang') || 'en';
 function t() { return I18N[currentLang] || I18N.en; }
 
 function today() {
-  return new Date().toISOString().slice(0, 10);
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 }
 
 function renderPostEntry(post, views) {

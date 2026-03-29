@@ -26,11 +26,13 @@ function getAllViews() {
   return views;
 }
 
-// Auto-record view if on a post page (post-meta tag present)
+// Auto-record view and update badge if on a post page (post-meta tag present)
 document.addEventListener('DOMContentLoaded', () => {
   const meta = document.querySelector('post-meta');
   if (meta) {
     const postId = meta.getAttribute('id') || window.location.pathname.split('/').pop().replace('.html', '');
-    recordView(postId);
+    const count = recordView(postId);
+    const badge = document.getElementById('view-count');
+    if (badge) badge.textContent = count + ' view' + (count !== 1 ? 's' : '');
   }
 });
