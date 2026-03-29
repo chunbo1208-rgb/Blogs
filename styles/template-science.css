@@ -1,0 +1,125 @@
+/* template-science.css — clean, clinical, diagram-ready */
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@400;500&display=swap');
+
+:root {
+  --bg:       #F4F9F4;
+  --surface:  #FFFFFF;
+  --text:     #1A2E1A;
+  --muted:    #5C7A5C;
+  --border:   #C8DECA;
+  --accent:   #2A7A4A;
+  --accent2:  #0E6B8A;
+  --warn:     #C05C1A;
+  --font-body: 'Source Serif 4', Georgia, serif;
+  --font-ui:   'DM Sans', system-ui, sans-serif;
+}
+
+body {
+  background: var(--bg);
+}
+
+/* ── Subject tag pill ────────────────────────────────────────────── */
+.post-header::before {
+  content: attr(data-subject);
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 99px;
+  margin-bottom: 0.8rem;
+}
+
+.post-header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+/* ── Content ─────────────────────────────────────────────────────── */
+.post-content {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.95;
+}
+
+/* ── Abstract box ────────────────────────────────────────────────── */
+.abstract {
+  background: rgba(42,122,74,0.06);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0 2rem;
+}
+.abstract::before {
+  content: 'Abstract';
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+}
+.abstract p { font-size: 0.95rem; color: var(--muted); margin: 0; }
+
+/* ── Figure / caption ────────────────────────────────────────────── */
+figure {
+  margin: 1.8em 0;
+  text-align: center;
+}
+figure img {
+  max-width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+figcaption {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+figcaption::before { content: 'Figure: '; font-style: normal; font-weight: 500; color: var(--accent); }
+
+/* ── Data table ──────────────────────────────────────────────────── */
+.post-content table {
+  font-family: var(--font-ui);
+  font-size: 0.88rem;
+}
+.post-content th {
+  background: var(--accent);
+  color: white;
+  font-weight: 500;
+}
+
+/* ── Callout blocks ──────────────────────────────────────────────── */
+.callout {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius);
+  margin: 1.2em 0;
+  font-family: var(--font-ui);
+  font-size: 0.92rem;
+}
+.callout.note    { background: rgba(14,107,138,0.07); border-left: 3px solid var(--accent2); }
+.callout.warning { background: rgba(192,92,26,0.07);  border-left: 3px solid var(--warn); }
+.callout.key     { background: rgba(42,122,74,0.07);  border-left: 3px solid var(--accent); }
+.callout-icon { font-size: 1rem; flex-shrink: 0; margin-top: 0.1em; }
+
+/* ── KaTeX in science context ────────────────────────────────────── */
+.katex-display {
+  background: #F0F7F0;
+  border-radius: var(--radius);
+  padding: 0.8rem 1rem;
+  margin: 1.2em 0;
+}

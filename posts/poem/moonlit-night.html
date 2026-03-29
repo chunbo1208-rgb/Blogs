@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moonlit Night — chunboblog</title>
+
+  <post-meta
+    id="moonlit-night"
+    title="Moonlit Night"
+    author="Du Fu"
+    date="2026-03-27"
+    subject="poem"
+    custom_subject="Tang Poetry"
+    language="en"
+    template="poem"
+  ></post-meta>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles/base.css" />
+  <link rel="stylesheet" href="../../styles/template-poem.css" />
+</head>
+<body>
+<div class="page-wrap">
+
+  <a href="poem.index.html" class="back-link">← Poem</a>
+
+  <header class="post-header">
+    <h1>Moonlit Night <span style="font-size:0.55em;color:var(--muted);font-weight:400">月夜</span></h1>
+    <div class="post-meta-line">
+      <span>Du Fu · 杜甫</span>
+      <span class="tag">Tang Poetry</span>
+      <span class="tag">en</span>
+      <span>2026-03-27</span>
+      <span class="view-badge" id="view-count"></span>
+    </div>
+  </header>
+
+  <article class="post-content">
+
+    <div class="poem-body" style="max-width:560px; text-align:left; margin:2rem auto;">
+      <p style="font-size:0.88rem; color:var(--muted); font-style:italic; margin-bottom:1.6em; letter-spacing:0.05em;">
+        Original: 今夜鄜州月，闺中只独看。<br />
+        遥怜小儿女，未解忆长安。<br />
+        香雾云鬟湿，清辉玉臂寒。<br />
+        何时倚虚幌，双照泪痕干。
+      </p>
+      <p>Tonight the moon over Fuzhou —</p>
+      <p>she watches it alone in her room.</p>
+      <p>Far off, I think of our small children</p>
+      <p>too young to understand longing for Chang'an.</p>
+      <p style="margin-top:1.6em;">Fragrant mist dampens her clouded hair;</p>
+      <p>cold moonlight chills her jade-white arms.</p>
+      <p>When will we lean against the empty curtains</p>
+      <p>and let the moonlight dry the tears on both our faces?</p>
+    </div>
+
+    <hr />
+
+    <div class="notes">
+      <h3>Notes</h3>
+      <p>
+        Du Fu (杜甫, 712–770 AD) wrote this during the An Lushan Rebellion, separated
+        from his family in Fuzhou while trapped in occupied Chang'an. The poem is unusual
+        in Tang poetry: rather than speaking in his own voice about missing home, Du Fu
+        imagines his wife watching the same moon, grieving for him. The tenderness is
+        devastating precisely because it is indirect.
+      </p>
+      <p>
+        The final image — moonlight drying tears — turns longing into hope. The reunion
+        is not yet real, but the poem performs it: the same moon, the same light, briefly
+        binding two separated people across a broken country.
+      </p>
+    </div>
+
+  </article>
+
+</div>
+
+<script src="../../js/views.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const badge = document.getElementById('view-count');
+    const v = getViews('moonlit-night');
+    badge.textContent = v + ' view' + (v !== 1 ? 's' : '');
+  });
+</script>
+</body>
+</html>

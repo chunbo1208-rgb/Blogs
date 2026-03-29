@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Poem — chunboblog</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles/base.css" />
+  <link rel="stylesheet" href="../../styles/template-poem.css" />
+  <style>
+    body { font-family: 'Noto Serif SC', serif; }
+    .index-wrap { max-width: 700px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
+    .index-header { margin-bottom: 2.5rem; }
+    .index-header h1 { font-size: 2rem; letter-spacing: 0.15em; color: var(--text); }
+    .index-header p { color: var(--muted); font-size: 0.9rem; margin-top: 0.5rem; }
+    .post-list { list-style: none; }
+    .post-list-item { border-bottom: 1px solid var(--border); }
+    .post-list-item a {
+      display: flex; align-items: baseline; justify-content: space-between;
+      padding: 1rem 0; gap: 1rem;
+      text-decoration: none; color: var(--text);
+      transition: opacity 0.15s;
+    }
+    .post-list-item a:hover { opacity: 0.65; }
+    .post-list-title { font-size: 1.05rem; font-weight: 500; }
+    .post-list-meta { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: var(--muted); white-space: nowrap; }
+    .back { font-family: 'Inter', sans-serif; font-size: 0.83rem; color: var(--muted); margin-bottom: 2rem; display: inline-flex; align-items: center; gap: 0.35rem; }
+    .back:hover { color: var(--text); opacity: 1; }
+    .empty { color: var(--muted); font-style: italic; padding: 1.5rem 0; }
+    .section-stamp {
+      float: right; width: 56px; height: 56px;
+      border: 2px solid var(--accent); color: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; opacity: 0.45; margin-left: 1rem;
+    }
+  </style>
+</head>
+<body>
+<div class="index-wrap">
+  <a href="../../index.html" class="back">← Home</a>
+
+  <div class="index-header">
+    <div class="section-stamp">詩</div>
+    <h1>Poem · 诗</h1>
+    <p>Classical verse, lyric poetry, and translations — in Chinese and English.</p>
+  </div>
+
+  <ul class="post-list" id="post-list">
+    <li class="empty">Loading…</li>
+  </ul>
+</div>
+
+<script src="../../posts-data.js"></script>
+<script src="../../js/views.js"></script>
+<script>
+(async () => {
+  const views = getAllViews();
+  const poems = (window.POSTS || []).filter(p => p.subject === 'poem').sort((a, b) => b.date.localeCompare(a.date));
+  const list = document.getElementById('post-list');
+
+  if (poems.length === 0) {
+    list.innerHTML = '<li class="empty">No poems yet.</li>';
+    return;
+  }
+
+  list.innerHTML = poems.map(p => {
+    const v = views[p.id] || 0;
+    const relPath = p.path.replace('posts/poem/', '');
+    return `<li class="post-list-item">
+      <a href="${relPath}">
+        <span class="post-list-title">${p.title} <small style="font-size:0.78em;color:var(--muted);font-weight:400">${p.author}</small></span>
+        <span class="post-list-meta">${p.custom_subject || ''} · ${v} views · ${p.date}</span>
+      </a>
+    </li>`;
+  }).join('');
+})();
+</script>
+</body>
+</html>

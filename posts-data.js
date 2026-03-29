@@ -1,0 +1,116 @@
+// posts-data.js
+// Inline post registry — avoids fetch() CORS block on file:// protocol.
+// To add a new post: add one object here AND create the HTML file.
+
+window.POSTS = [
+  {
+    "id": "jing-ye-si",
+    "path": "posts/poem/静夜思.html",
+    "title": "静夜思",
+    "author": "李白",
+    "date": "2026-03-29",
+    "subject": "poem",
+    "custom_subject": "唐诗",
+    "language": "zh",
+    "template": "poem"
+  },
+  {
+    "id": "deng-guan-que-lou",
+    "path": "posts/poem/登鹳雀楼.html",
+    "title": "登鹳雀楼",
+    "author": "王之涣",
+    "date": "2026-03-29",
+    "subject": "poem",
+    "custom_subject": "唐诗",
+    "language": "zh",
+    "template": "poem"
+  },
+  {
+    "id": "spring-dawn",
+    "path": "posts/poem/spring-dawn.html",
+    "title": "Spring Dawn",
+    "author": "Meng Haoran",
+    "date": "2026-03-28",
+    "subject": "poem",
+    "custom_subject": "Tang Poetry",
+    "language": "en",
+    "template": "poem"
+  },
+  {
+    "id": "moonlit-night",
+    "path": "posts/poem/moonlit-night.html",
+    "title": "Moonlit Night",
+    "author": "Du Fu",
+    "date": "2026-03-27",
+    "subject": "poem",
+    "custom_subject": "Tang Poetry",
+    "language": "en",
+    "template": "poem"
+  },
+  {
+    "id": "eulers-identity",
+    "path": "posts/math/eulers-identity.html",
+    "title": "Euler's Identity: The Most Beautiful Equation",
+    "author": "Chunbo Liu",
+    "date": "2026-03-29",
+    "subject": "math",
+    "custom_subject": "Analysis",
+    "language": "en",
+    "template": "math"
+  },
+  {
+    "id": "cantor-diagonal",
+    "path": "posts/math/cantor-diagonal.html",
+    "title": "Cantor's Diagonal Argument",
+    "author": "Chunbo Liu",
+    "date": "2026-03-28",
+    "subject": "math",
+    "custom_subject": "Set Theory",
+    "language": "en",
+    "template": "math"
+  },
+  {
+    "id": "on-writing",
+    "path": "posts/ideas/on-writing.html",
+    "title": "On Writing in Silence",
+    "author": "Chunbo Liu",
+    "date": "2026-03-28",
+    "subject": "ideas",
+    "custom_subject": "Reflection",
+    "language": "en",
+    "template": "default"
+  },
+  {
+    "id": "on-reading",
+    "path": "posts/ideas/on-reading.html",
+    "title": "On Reading Slowly",
+    "author": "Chunbo Liu",
+    "date": "2026-03-27",
+    "subject": "ideas",
+    "custom_subject": "Reflection",
+    "language": "en",
+    "template": "default"
+  },
+  {
+    "id": "cell-division",
+    "path": "posts/biology/cell-division.html",
+    "title": "Mitosis: The Dance of Division",
+    "author": "Chunbo Liu",
+    "date": "2026-03-27",
+    "subject": "biology",
+    "custom_subject": "Cell Biology",
+    "language": "en",
+    "template": "science"
+  },
+  {
+    "id": "dna-replication",
+    "path": "posts/biology/dna-replication.html",
+    "title": "DNA Replication: Reading the Blueprint",
+    "author": "Chunbo Liu",
+    "date": "2026-03-26",
+    "subject": "biology",
+    "custom_subject": "Molecular Biology",
+    "language": "en",
+    "template": "science"
+  }
+];

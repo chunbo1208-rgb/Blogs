@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DNA Replication: Reading the Blueprint — chunboblog</title>
+
+  <post-meta
+    id="dna-replication"
+    title="DNA Replication: Reading the Blueprint"
+    author="Chunbo Liu"
+    date="2026-03-26"
+    subject="biology"
+    custom_subject="Molecular Biology"
+    language="en"
+    template="science"
+  ></post-meta>
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles/base.css" />
+  <link rel="stylesheet" href="../../styles/template-science.css" />
+</head>
+<body>
+<div class="page-wrap">
+
+  <a href="biology.index.html" class="back-link">← Biology</a>
+
+  <header class="post-header" data-subject="Molecular Biology">
+    <h1>DNA Replication: Reading the Blueprint</h1>
+    <div class="post-meta-line">
+      <span>Chunbo Liu</span>
+      <span class="tag">Molecular Biology</span>
+      <span>2026-03-26</span>
+      <span class="view-badge" id="view-count"></span>
+    </div>
+  </header>
+
+  <article class="post-content">
+
+    <div class="abstract">
+      <p>
+        Every time a cell divides, it must copy roughly 3 billion base pairs of DNA with
+        extraordinary fidelity. This post covers the core machinery of eukaryotic DNA
+        replication: helicase, primase, DNA polymerase, and the asymmetry between the
+        leading and lagging strands.
+      </p>
+    </div>
+
+    <h2>The Core Problem</h2>
+
+    <p>
+      DNA is a double helix — two antiparallel strands wound around each other. To copy
+      it, you must first unwind it. But DNA polymerase can only synthesize in the
+      $5' \to 3'$ direction, and the two template strands run in opposite directions.
+      This creates a fundamental asymmetry that the cell solves with elegant machinery.
+    </p>
+
+    <div class="callout note">
+      <span class="callout-icon">ℹ</span>
+      <span>DNA polymerase cannot start a new strand from scratch — it can only extend an
+      existing 3'-OH end. This is why <strong>primase</strong> must first lay down a short
+      RNA primer before polymerase can begin.</span>
+    </div>
+
+    <h2>Key Enzymes</h2>
+
+    <table>
+      <thead>
+        <tr><th>Enzyme</th><th>Function</th><th>Direction</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Helicase</td><td>Unwinds the double helix at the replication fork</td><td>Both</td></tr>
+        <tr><td>Primase</td><td>Synthesizes short RNA primers (~10 nt)</td><td>$3' \to 5'$ template</td></tr>
+        <tr><td>DNA Pol α</td><td>Extends RNA primer with DNA (low fidelity)</td><td>$5' \to 3'$</td></tr>
+        <tr><td>DNA Pol δ</td><td>Lagging strand synthesis; proofreading</td><td>$5' \to 3'$</td></tr>
+        <tr><td>DNA Pol ε</td><td>Leading strand synthesis; proofreading</td><td>$5' \to 3'$</td></tr>
+        <tr><td>RNase H / FEN1</td><td>Removes RNA primers</td><td>—</td></tr>
+        <tr><td>DNA Ligase</td><td>Seals nicks between Okazaki fragments</td><td>—</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Leading vs. Lagging Strand</h2>
+
+    <p>
+      Because polymerase only runs $5' \to 3'$, the two template strands are copied very
+      differently:
+    </p>
+
+    <p>
+      The <strong>leading strand</strong> is synthesized continuously — the polymerase
+      follows the fork as it opens, producing one uninterrupted new strand.
+    </p>
+
+    <p>
+      The <strong>lagging strand</strong> must be synthesized in short segments — called
+      <strong>Okazaki fragments</strong> (~150–200 bp in eukaryotes) — each requiring its
+      own primer. These fragments are later joined by DNA ligase after the primers are
+      replaced with DNA.
+    </p>
+
+    <div class="callout key">
+      <span class="callout-icon">⚡</span>
+      <span><strong>Okazaki fragments</strong> were discovered by Reiji and Tsuneko Okazaki
+      in the 1960s using pulse-chase experiments with radioactive thymidine. The observation
+      of short labeled fragments confirmed the discontinuous nature of lagging strand
+      synthesis.</span>
+    </div>
+
+    <h2>Fidelity: How Accurate Is It?</h2>
+
+    <p>
+      The raw error rate of DNA polymerase is approximately $10^{-5}$ per base pair.
+      With proofreading (3'→5' exonuclease activity), this drops to $\sim 10^{-7}$.
+      After mismatch repair, the final error rate is:
+    </p>
+
+    $$\epsilon \approx 10^{-9} \text{ errors per base pair per replication}$$
+
+    <p>
+      Across a $3 \times 10^9$ bp genome, this means roughly 3 mutations per cell division —
+      a remarkable achievement given the speed (the human replication fork moves at
+      $\sim 1{,}000$ bp/s).
+    </p>
+
+    <div class="callout warning">
+      <span class="callout-icon">⚠</span>
+      <span>Defects in mismatch repair genes (MLH1, MSH2, MSH6) cause Lynch Syndrome,
+      dramatically increasing lifetime risk of colorectal and other cancers due to
+      accumulated replication errors.</span>
+    </div>
+
+    <h2>The End Replication Problem</h2>
+
+    <p>
+      Linear chromosomes face a fundamental problem: each round of replication shortens
+      the lagging strand template at the 5' end (because the terminal RNA primer is
+      removed but cannot be replaced). Without a solution, chromosomes would shrink
+      with every division.
+    </p>
+
+    <p>
+      The solution is <strong>telomerase</strong> — a reverse transcriptase that carries
+      its own RNA template and extends chromosome ends by adding TTAGGG repeats. Telomerase
+      is active in stem cells and is re-activated in ~85% of cancers, granting cellular
+      immortality.
+    </p>
+
+  </article>
+
+</div>
+
+<script src="../../js/views.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const badge = document.getElementById('view-count');
+    const v = getViews('dna-replication');
+    badge.textContent = v + ' view' + (v !== 1 ? 's' : '');
+  });
+</script>
+</body>
+</html>

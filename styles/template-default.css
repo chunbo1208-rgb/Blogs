@@ -1,0 +1,82 @@
+/* template-default.css — clean, readable, versatile */
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap');
+
+:root {
+  --bg:       #F8F6F2;
+  --surface:  #FFFFFF;
+  --text:     #1C1C1C;
+  --muted:    #7A7166;
+  --border:   #E2DDD6;
+  --accent:   #8B7355;
+  --font-body: 'Lora', Georgia, serif;
+  --font-ui:   'Inter', system-ui, sans-serif;
+}
+
+body {
+  background: var(--bg);
+}
+
+.post-header h1 {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: 2rem;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.post-content {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.85;
+}
+
+/* Drop cap on first paragraph */
+.post-content > p:first-of-type::first-letter {
+  float: left;
+  font-size: 3.2em;
+  line-height: 0.8;
+  margin: 0.08em 0.12em 0 0;
+  font-family: var(--font-ui);
+  font-weight: 500;
+  color: var(--accent);
+}
+
+/* ── Pull quote ──────────────────────────────────────────────────── */
+.pull-quote {
+  font-size: 1.35rem;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--accent);
+  border-top: 2px solid var(--border);
+  border-bottom: 2px solid var(--border);
+  padding: 1.2rem 0;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+/* ── Tags ────────────────────────────────────────────────────────── */
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.post-tag {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  padding: 3px 10px;
+  background: var(--border);
+  border-radius: 99px;
+  color: var(--muted);
+}
+
+/* ── KaTeX ───────────────────────────────────────────────────────── */
+.katex-display {
+  background: #F0EDE8;
+  border-radius: var(--radius);
+  padding: 0.8rem 1rem;
+  margin: 1.2em 0;
+}

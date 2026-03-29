@@ -1,140 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chunbo Liu</title>
-  <link rel="stylesheet" href="assets/style.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body,{delimiters:[
-      {left:'$$',right:'$$',display:true},
-      {left:'$',right:'$',display:false}
-    ]})"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>chunboblog</title>
 
-  <!-- ════════════════════════════════════════════════════════
-       POST REGISTRY — add ONE line per new post, newest first.
+  <!-- KaTeX (for any inline math in post lists) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
 
-       Fields:
-         date    "YYYY-MM-DD"   required — controls Daily Posts
-         subject "Tag"          required — shown as pill badge
-         href    "posts/..."    required — link target
-         title   "..."          required — display text
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-       Example:
-         { date:"2026-03-28", subject:"Math", href:"posts/euler.html", title:"Why e^iπ+1=0" },
-  ════════════════════════════════════════════════════════ -->
-  <script>
-  const POSTS = [
-    { date:"2026-03-27", subject:"Meta", href:"posts/template.html", title:"Template — how this site works" },
-  ];
-  </script>
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/index.css" />
 </head>
 <body>
 
-<header>
-  <h1>Chunbo Liu</h1>
-  <p class="tagline">Notes on math, physics, CS, and other things worth writing down.</p>
-  <div class="topics">
-    <a class="topic" href="#">Self</a>
-      <a class="topic" href="posts/math/math.index.html">Math</a>
-    <a class="topic" href="#">Physics</a>
-    <a class="topic" href="#">CS</a>
-    <a class="topic" href="#">Philosophy</a>
-    <a class="topic" href="#">Daily</a>
-    <a class="topic" href="posts/biology/biology.index.html">Biology</a>
-  </div>
-</header>
+<div class="site-wrap">
 
-<main>
-  <section>
-    <h2>Daily Posts <span id="today-label" class="section-date"></span></h2>
-    <ul id="daily-list" class="post-list"></ul>
-    <p id="no-daily" class="no-posts" hidden>No entries today yet.</p>
+  <!-- ── Header ─────────────────────────────────────────────────── -->
+  <header class="site-header">
+    <a href="/" class="site-title">chunbo<span>blog</span></a>
+
+    <div class="lang-toggle" role="group" aria-label="Language filter">
+      <button class="lang-btn active" data-lang="all">All</button>
+      <button class="lang-btn" data-lang="zh">中文</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+  </header>
+
+  <!-- ── Today's Posts ──────────────────────────────────────────── -->
+  <section class="home-section" aria-label="Today's posts">
+    <div class="section-heading">
+      <h2>Today</h2>
+      <span class="section-date" id="today-date"></span>
+    </div>
+    <div id="today-posts">
+      <p class="empty-msg">Loading…</p>
+    </div>
   </section>
 
-  <section>
-    <h2>Top Articles</h2>
-    <ul id="top-list" class="post-list"></ul>
-    <p id="no-top" class="no-posts" hidden>No views recorded yet — start reading.</p>
+  <!-- ── Top 10 ─────────────────────────────────────────────────── -->
+  <section class="home-section" aria-label="Most read">
+    <div class="section-heading">
+      <h2>Most Read</h2>
+    </div>
+    <div id="top-posts">
+      <p class="empty-msg">Loading…</p>
+    </div>
   </section>
-</main>
 
-<footer>
-  <p>I love this world!</p>
-  <p>Email: chunbo1208@gmail.com</p>
-</footer>
+  <!-- ── Sections ───────────────────────────────────────────────── -->
+  <section class="home-section" aria-label="Sections">
+    <div class="section-heading">
+      <h2>Sections</h2>
+    </div>
+    <div class="sections-grid" id="sections-grid">
+      <!-- populated by discover.js -->
+    </div>
+  </section>
 
+</div><!-- /.site-wrap -->
+
+<script src="posts-data.js"></script>
+<script src="js/views.js"></script>
+<script src="js/discover.js"></script>
 <script>
-  // ── Helpers ───────────────────────────────────────────────
-  const TODAY = new Date().toISOString().slice(0, 10);
-
-  function getClicks(href) {
-    return parseInt(localStorage.getItem('clicks:' + href) || '0');
-  }
-  function trackClick(href) {
-    localStorage.setItem('clicks:' + href, getClicks(href) + 1);
-  }
-
-  // Build one <li>: date (optional), subject pill, title link, view count
-  function buildItem(post, showDate) {
-    const li = document.createElement('li');
-
-    if (showDate) {
-      const t = document.createElement('time');
-      t.setAttribute('datetime', post.date);
-      t.textContent = post.date;
-      li.appendChild(t);
-    }
-
-    const s = document.createElement('span');
-    s.className = 'subject';
-    s.textContent = post.subject;
-    li.appendChild(s);
-
-    const a = document.createElement('a');
-    a.href = post.href;
-    a.textContent = post.title;
-    a.addEventListener('click', () => trackClick(post.href));
-    li.appendChild(a);
-
-    const clicks = getClicks(post.href);
-    if (clicks > 0) {
-      const c = document.createElement('span');
-      c.className = 'clicks';
-      c.textContent = clicks + (clicks === 1 ? ' view' : ' views');
-      li.appendChild(c);
-    }
-
-    return li;
-  }
-
-  // ── Daily Posts ───────────────────────────────────────────
-  document.getElementById('today-label').textContent = TODAY;
-
-  const todayPosts = POSTS.filter(p => p.date === TODAY);
-  if (todayPosts.length === 0) {
-    document.getElementById('no-daily').hidden = false;
-  } else {
-    const dl = document.getElementById('daily-list');
-    todayPosts.forEach(p => dl.appendChild(buildItem(p, false)));
-  }
-
-  // ── Top Articles (top 10 by click count) ─────────────────
-  const ranked = [...POSTS]
-    .map(p => ({ ...p, clicks: getClicks(p.href) }))
-    .filter(p => p.clicks > 0)
-    .sort((a, b) => b.clicks - a.clicks)
-    .slice(0, 10);
-
-  if (ranked.length === 0) {
-    document.getElementById('no-top').hidden = false;
-  } else {
-    const tl = document.getElementById('top-list');
-    ranked.forEach(p => tl.appendChild(buildItem(p, true)));
-  }
+  // Show today's date in the heading
+  document.getElementById('today-date').textContent =
+    new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 </script>
-
 </body>
 </html>

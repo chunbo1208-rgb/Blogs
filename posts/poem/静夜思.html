@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>静夜思 — chunboblog</title>
+
+  <post-meta
+    id="jing-ye-si"
+    title="静夜思"
+    author="李白"
+    date="2026-03-29"
+    subject="poem"
+    custom_subject="唐诗"
+    language="zh"
+    template="poem"
+  ></post-meta>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles/base.css" />
+  <link rel="stylesheet" href="../../styles/template-poem.css" />
+</head>
+<body>
+<div class="page-wrap">
+
+  <a href="poem.index.html" class="back-link">← Poem</a>
+
+  <header class="post-header">
+    <h1>静夜思</h1>
+    <div class="post-meta-line">
+      <span>李白</span>
+      <span class="tag">唐诗</span>
+      <span class="tag">poem</span>
+      <span class="tag">zh</span>
+      <span>2026-03-29</span>
+      <span class="view-badge" id="view-count"></span>
+    </div>
+  </header>
+
+  <article class="post-content">
+
+    <div class="poem-body">
+      <p>床前明月光，</p>
+      <p>疑是地上霜。</p>
+      <p>举头望明月，</p>
+      <p>低头思故乡。</p>
+    </div>
+
+    <hr />
+
+    <div class="translation">
+      <h3>English Translation</h3>
+      <p>
+        Before my bed, the bright moonlight<br />
+        seems like frost upon the ground.<br />
+        I raise my head to gaze upon the moon,<br />
+        then lower it, and dream of home.
+      </p>
+    </div>
+
+    <div class="notes">
+      <h3>Notes</h3>
+      <p>
+        One of the most celebrated poems in the Tang Dynasty canon. Li Bai (701–762 AD)
+        wrote this short <em>jueju</em> (絶句) — a four-line, five-character verse — while
+        traveling far from his homeland. The poem derives its power from extreme economy:
+        twenty characters, one image, one feeling.
+      </p>
+      <p>
+        The pairing of 明月 (bright moon) with 故乡 (hometown/homeland) is a classical
+        Chinese trope — the moon as witness to separation, its cold light rhyming with frost,
+        distance with downward gaze.
+      </p>
+    </div>
+
+  </article>
+
+</div>
+
+<script src="../../js/views.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const badge = document.getElementById('view-count');
+    const v = getViews('jing-ye-si');
+    badge.textContent = v + ' view' + (v !== 1 ? 's' : '');
+  });
+</script>
+</body>
+</html>

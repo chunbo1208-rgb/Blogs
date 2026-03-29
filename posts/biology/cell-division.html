@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mitosis: The Dance of Division — chunboblog</title>
+
+  <post-meta
+    id="cell-division"
+    title="Mitosis: The Dance of Division"
+    author="Chunbo Liu"
+    date="2026-03-27"
+    subject="biology"
+    custom_subject="Cell Biology"
+    language="en"
+    template="science"
+  ></post-meta>
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles/base.css" />
+  <link rel="stylesheet" href="../../styles/template-science.css" />
+</head>
+<body>
+<div class="page-wrap">
+
+  <a href="biology.index.html" class="back-link">← Biology</a>
+
+  <header class="post-header" data-subject="Cell Biology">
+    <h1>Mitosis: The Dance of Division</h1>
+    <div class="post-meta-line">
+      <span>Chunbo Liu</span>
+      <span class="tag">Cell Biology</span>
+      <span>2026-03-27</span>
+      <span class="view-badge" id="view-count"></span>
+    </div>
+  </header>
+
+  <article class="post-content">
+
+    <div class="abstract">
+      <p>
+        Mitosis is the process by which a eukaryotic cell divides its duplicated genome
+        equally into two daughter cells. We walk through the five canonical phases —
+        prophase, metaphase, anaphase, telophase, and cytokinesis — and discuss the
+        regulatory machinery that makes the process so precise.
+      </p>
+    </div>
+
+    <h2>Why Division Must Be Precise</h2>
+
+    <p>
+      A human body contains approximately $3.7 \times 10^{13}$ cells, each carrying a
+      nearly identical copy of the genome. During your lifetime, an estimated $10^{16}$
+      cell divisions occur. At this scale, even an error rate of $10^{-9}$ per division
+      per base pair would produce millions of mutations.
+    </p>
+
+    <p>
+      Mitosis is the cell's solution to this problem: a highly choreographed mechanical
+      process that physically separates sister chromatids with extraordinary fidelity.
+    </p>
+
+    <div class="callout note">
+      <span class="callout-icon">ℹ</span>
+      <span>Mitosis (M phase) is distinct from meiosis. Mitosis produces two genetically
+      identical daughter cells; meiosis produces four genetically unique gametes with
+      half the chromosome count.</span>
+    </div>
+
+    <h2>The Five Phases</h2>
+
+    <h3>1. Prophase</h3>
+    <p>
+      Chromatin condenses into visible chromosomes, each consisting of two sister chromatids
+      held together at the centromere. The mitotic spindle begins to form from the
+      centrosomes, which migrate to opposite poles of the cell. The nuclear envelope
+      starts to break down.
+    </p>
+
+    <h3>2. Metaphase</h3>
+    <p>
+      Chromosomes align at the metaphase plate — an imaginary plane equidistant between
+      the two poles. Each chromosome is attached to spindle microtubules from both poles
+      via kinetochore proteins. The spindle assembly checkpoint (SAC) holds the cell here
+      until every chromosome is properly bioriented.
+    </p>
+
+    <div class="callout key">
+      <span class="callout-icon">⚡</span>
+      <span><strong>Spindle Assembly Checkpoint:</strong> Mad2 and BubR1 proteins monitor
+      unattached kinetochores. A single unattached kinetochore is sufficient to halt
+      progression to anaphase.</span>
+    </div>
+
+    <h3>3. Anaphase</h3>
+    <p>
+      Once the SAC is satisfied, separase cleaves cohesin — the protein complex holding
+      sister chromatids together. The chromatids are pulled to opposite poles by shortening
+      kinetochore microtubules (kinesin and dynein motors) and by elongation of the spindle
+      midzone (anaphase B).
+    </p>
+
+    <h3>4. Telophase</h3>
+    <p>
+      Chromosomes arrive at the poles and begin to decondense. Nuclear envelopes reassemble
+      around each set of chromosomes, and the spindle disassembles.
+    </p>
+
+    <h3>5. Cytokinesis</h3>
+    <p>
+      The cytoplasm divides via a contractile ring of actin and myosin II that constricts
+      at the cell equator, pinching off two daughter cells. In plant cells, a cell plate
+      forms instead (no contractile ring).
+    </p>
+
+    <h2>The Numbers</h2>
+
+    <p>A typical human somatic cell division:</p>
+
+    <table>
+      <thead>
+        <tr><th>Phase</th><th>Duration</th><th>Key Event</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>G₁ (interphase)</td><td>~11 hours</td><td>Growth, preparation</td></tr>
+        <tr><td>S phase</td><td>~8 hours</td><td>DNA replication</td></tr>
+        <tr><td>G₂</td><td>~4 hours</td><td>Checkpoint, further growth</td></tr>
+        <tr><td>Mitosis (M)</td><td>~1 hour</td><td>Chromosome segregation</td></tr>
+        <tr><td>Cytokinesis</td><td>~30 min</td><td>Cell splitting</td></tr>
+      </tbody>
+    </table>
+
+    <p>
+      The entire cell cycle thus spans roughly 24 hours for a typical proliferating human
+      cell — with mitosis itself occupying only about 4% of that time.
+    </p>
+
+    <div class="callout warning">
+      <span class="callout-icon">⚠</span>
+      <span>Cancer cells often disable checkpoint mechanisms (p53, Rb, SAC), allowing
+      division to proceed despite DNA damage or chromosome misattachment.</span>
+    </div>
+
+  </article>
+
+</div>
+
+<script src="../../js/views.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const badge = document.getElementById('view-count');
+    const v = getViews('cell-division');
+    badge.textContent = v + ' view' + (v !== 1 ? 's' : '');
+  });
+</script>
+</body>
+</html>

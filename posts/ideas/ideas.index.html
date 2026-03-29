@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ideas — chunboblog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles/base.css" />
+  <link rel="stylesheet" href="../../styles/template-default.css" />
+  <style>
+    .index-wrap { max-width: 700px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
+    .index-header { margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+    .index-header h1 { font-family: 'Inter', sans-serif; font-size: 2rem; font-weight: 500; letter-spacing: -0.03em; }
+    .index-header p { color: var(--muted); font-size: 0.9rem; margin-top: 0.5rem; font-family: 'Inter', sans-serif; }
+    .post-list { list-style: none; }
+    .post-list-item { border-bottom: 1px solid var(--border); }
+    .post-list-item a { display: flex; flex-direction: column; padding: 1.1rem 0; gap: 0.25rem; color: var(--text); transition: opacity 0.15s; }
+    .post-list-item a:hover { opacity: 0.65; }
+    .post-list-title { font-family: 'Lora', serif; font-size: 1.05rem; }
+    .post-list-meta { font-family: 'Inter', sans-serif; font-size: 0.78rem; color: var(--muted); }
+    .back { font-family: 'Inter', sans-serif; font-size: 0.83rem; color: var(--muted); margin-bottom: 2rem; display: inline-flex; align-items: center; gap: 0.35rem; }
+    .back:hover { color: var(--text); opacity: 1; }
+    .empty { color: var(--muted); font-style: italic; padding: 1.5rem 0; font-family: 'Inter', sans-serif; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+<div class="index-wrap">
+  <a href="../../index.html" class="back">← Home</a>
+  <div class="index-header">
+    <h1>💡 Ideas</h1>
+    <p>Reflections, observations, and half-formed thoughts worth writing down.</p>
+  </div>
+  <ul class="post-list" id="post-list">
+    <li class="empty">Loading…</li>
+  </ul>
+</div>
+<script src="../../posts-data.js"></script>
+<script src="../../js/views.js"></script>
+<script>
+(async () => {
+  const views = getAllViews();
+  const items = (window.POSTS || []).filter(p => p.subject === 'ideas').sort((a,b) => b.date.localeCompare(a.date));
+  const list = document.getElementById('post-list');
+  if (!items.length) { list.innerHTML = '<li class="empty">No ideas yet.</li>'; return; }
+  list.innerHTML = items.map(p => {
+    const v = views[p.id] || 0;
+    const rel = p.path.replace('posts/ideas/', '');
+    return `<li class="post-list-item"><a href="${rel}">
+      <span class="post-list-title">${p.title}</span>
+      <span class="post-list-meta">${p.custom_subject || ''} · ${v} views · ${p.date}</span>
+    </a></li>`;
+  }).join('');
+})();
+</script>
+</body>
+</html>

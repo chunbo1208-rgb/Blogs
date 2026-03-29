@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Euler's Identity — chunboblog</title>
+
+  <post-meta
+    id="eulers-identity"
+    title="Euler's Identity: The Most Beautiful Equation"
+    author="Chunbo Liu"
+    date="2026-03-29"
+    subject="math"
+    custom_subject="Analysis"
+    language="en"
+    template="math"
+  ></post-meta>
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false}
+      ]
+    });"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles/base.css" />
+  <link rel="stylesheet" href="../../styles/template-math.css" />
+</head>
+<body>
+<div class="page-wrap">
+
+  <a href="math.index.html" class="back-link">← Math</a>
+
+  <header class="post-header">
+    <h1>Euler's Identity: The Most Beautiful Equation</h1>
+    <div class="post-meta-line">
+      <span>Chunbo Liu</span>
+      <span class="tag">Analysis</span>
+      <span class="tag">Complex Numbers</span>
+      <span>2026-03-29</span>
+      <span class="view-badge" id="view-count"></span>
+    </div>
+  </header>
+
+  <article class="post-content">
+
+    <p>
+      Of all the equations in mathematics, one stands above the rest — not for its
+      computational utility, but for its sheer audacity in uniting the five most fundamental
+      constants in a single, breathtaking statement.
+    </p>
+
+    $$e^{i\pi} + 1 = 0$$
+
+    <p>
+      This is <strong>Euler's identity</strong>. It contains: the base of natural logarithms
+      $e \approx 2.71828$, the imaginary unit $i = \sqrt{-1}$, the ratio of a circle's
+      circumference to its diameter $\pi \approx 3.14159$, the multiplicative identity $1$,
+      and the additive identity $0$.
+    </p>
+
+    <h2>Euler's Formula</h2>
+
+    <p>
+      The identity is a special case of the more general <strong>Euler's formula</strong>,
+      which relates complex exponentials to trigonometric functions:
+    </p>
+
+    $$e^{i\theta} = \cos\theta + i\sin\theta$$
+
+    <p>
+      Substituting $\theta = \pi$ and using $\cos\pi = -1$, $\sin\pi = 0$:
+    </p>
+
+    $$e^{i\pi} = \cos\pi + i\sin\pi = -1 + 0 \cdot i = -1$$
+
+    <p>Hence $e^{i\pi} + 1 = 0$. The proof is almost trivial once you have the formula —
+    the real work is establishing the formula itself.</p>
+
+    <h2>Proof via Taylor Series</h2>
+
+    <p>
+      Define the exponential function by its Taylor series — valid everywhere in $\mathbb{C}$:
+    </p>
+
+    $$e^z = \sum_{n=0}^{\infty} \frac{z^n}{n!} = 1 + z + \frac{z^2}{2!} + \frac{z^3}{3!} + \cdots$$
+
+    <p>Substituting $z = i\theta$, and noting the pattern of powers of $i$:</p>
+
+    <div class="definition">
+      Powers of $i$ cycle with period 4: $\;i^0=1,\; i^1=i,\; i^2=-1,\; i^3=-i,\; i^4=1, \ldots$
+    </div>
+
+    <p>Separating real and imaginary parts:</p>
+
+    $$e^{i\theta}
+      = \underbrace{\left(1 - \frac{\theta^2}{2!} + \frac{\theta^4}{4!} - \cdots\right)}_{\cos\theta}
+      + i\underbrace{\left(\theta - \frac{\theta^3}{3!} + \frac{\theta^5}{5!} - \cdots\right)}_{\sin\theta}$$
+
+    <div class="theorem">
+      For all $\theta \in \mathbb{R}$:
+      $$e^{i\theta} = \cos\theta + i\sin\theta$$
+    </div>
+
+    <div class="proof">
+      <p>
+        The Taylor series for $e^z$ converges absolutely for all $z \in \mathbb{C}$
+        (by the ratio test: $|z|^{n+1}/(n+1)! \to 0$). Substituting $z = i\theta$ and
+        grouping even and odd powers:
+      </p>
+      $$\sum_{n=0}^{\infty}\frac{(i\theta)^n}{n!}
+        = \sum_{k=0}^{\infty}\frac{(-1)^k\theta^{2k}}{(2k)!}
+        + i\sum_{k=0}^{\infty}\frac{(-1)^k\theta^{2k+1}}{(2k+1)!}
+        = \cos\theta + i\sin\theta.$$
+      <span class="qed"></span>
+    </div>
+
+    <h2>Geometric Interpretation</h2>
+
+    <p>
+      On the complex plane, multiplying by $e^{i\theta}$ is a rotation by angle $\theta$
+      about the origin. The unit circle — all complex numbers $z$ with $|z|=1$ — can be
+      parametrized exactly as:
+    </p>
+
+    $$z = e^{i\theta}, \quad \theta \in [0, 2\pi)$$
+
+    <p>
+      Euler's identity says: start at $1$ on the real axis, rotate by $\pi$ radians
+      (half a turn), and you land at $-1$. One step further ($2\pi$) returns you home.
+      The whole geometry of the circle is encoded in a single exponential.
+    </p>
+
+    <h2>Why It Matters</h2>
+
+    <p>
+      Beyond aesthetics, Euler's formula is foundational to Fourier analysis, quantum
+      mechanics (the Schrödinger equation uses $e^{i\omega t}$ extensively), electrical
+      engineering (phasors), and signal processing. The identity is not a curiosity — it
+      is the reason complex analysis is so unreasonably effective.
+    </p>
+
+    <blockquote>
+      "The most remarkable formula in mathematics." — Richard Feynman
+    </blockquote>
+
+  </article>
+
+</div>
+
+<script src="../../js/views.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const badge = document.getElementById('view-count');
+    const v = getViews('eulers-identity');
+    badge.textContent = v + ' view' + (v !== 1 ? 's' : '');
+  });
+</script>
+</body>
+</html>

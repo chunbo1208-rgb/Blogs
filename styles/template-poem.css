@@ -1,0 +1,128 @@
+/* template-poem.css — classical poetry aesthetic */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;700&display=swap');
+
+:root {
+  --bg:      #FDF8EE;
+  --surface: #FFFCF4;
+  --text:    #2A1F0E;
+  --muted:   #8A7356;
+  --border:  #E8DCC8;
+  --accent:  #B03A2E;
+  --font-body: 'Noto Serif SC', 'STKaiti', '楷体', serif;
+}
+
+body {
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse at 80% 10%, rgba(176, 58, 46, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 90%, rgba(139, 90, 43, 0.05) 0%, transparent 60%);
+}
+
+/* ── Poem seal decoration ────────────────────────────────────────── */
+.post-header {
+  position: relative;
+  padding-bottom: 2rem;
+}
+
+.post-header::after {
+  content: '印';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  opacity: 0.55;
+  font-family: 'Noto Serif SC', serif;
+  line-height: 44px;
+  text-align: center;
+}
+
+.post-header h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--text);
+}
+
+/* ── Poem body ───────────────────────────────────────────────────── */
+.post-content {
+  font-size: 1.15rem;
+  line-height: 2.2;
+  letter-spacing: 0.05em;
+}
+
+/* Stanza breaks */
+.post-content p {
+  text-indent: 0;
+}
+.post-content p + p {
+  margin-top: 1.8em;
+}
+
+/* Verse lines: centered by default for classical poems */
+.poem-body {
+  text-align: center;
+  max-width: 500px;
+  margin: 2rem auto;
+}
+
+.poem-body p {
+  margin: 0;
+  line-height: 2.8;
+}
+
+/* ── Translation block ───────────────────────────────────────────── */
+.translation {
+  margin: 2.5rem 0;
+  padding: 1.5rem 2rem;
+  background: rgba(176, 58, 46, 0.04);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.translation h3 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 0.8em;
+  font-weight: 400;
+}
+.translation p {
+  font-style: italic;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* ── Notes ───────────────────────────────────────────────────────── */
+.notes {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.notes h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1em;
+  color: var(--accent);
+  font-weight: 400;
+}
+
+/* ── Decorative rule ─────────────────────────────────────────────── */
+hr {
+  border: none;
+  text-align: center;
+  margin: 2rem 0;
+  color: var(--accent);
+  opacity: 0.4;
+}
+hr::before { content: '◇  ◇  ◇'; font-size: 0.7rem; letter-spacing: 0.5em; }

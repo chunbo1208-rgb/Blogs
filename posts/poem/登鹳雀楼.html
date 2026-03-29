@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>登鹳雀楼 — chunboblog</title>
+
+  <post-meta
+    id="deng-guan-que-lou"
+    title="登鹳雀楼"
+    author="王之涣"
+    date="2026-03-29"
+    subject="poem"
+    custom_subject="唐诗"
+    language="zh"
+    template="poem"
+  ></post-meta>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles/base.css" />
+  <link rel="stylesheet" href="../../styles/template-poem.css" />
+</head>
+<body>
+<div class="page-wrap">
+
+  <a href="poem.index.html" class="back-link">← 诗</a>
+
+  <header class="post-header">
+    <h1>登鹳雀楼</h1>
+    <div class="post-meta-line">
+      <span>王之涣</span>
+      <span class="tag">唐诗</span>
+      <span class="tag">五言绝句</span>
+      <span class="tag">zh</span>
+      <span>2026-03-29</span>
+      <span class="view-badge" id="view-count"></span>
+    </div>
+  </header>
+
+  <article class="post-content">
+
+    <div class="poem-body" style="font-size:1.4rem; letter-spacing:0.25em; line-height:3.2;">
+      <p>白日依山尽，</p>
+      <p>黄河入海流。</p>
+      <p>欲穷千里目，</p>
+      <p>更上一层楼。</p>
+    </div>
+
+    <hr />
+
+    <div class="translation">
+      <h3>English Translation</h3>
+      <p>
+        The white sun sets behind the mountains;<br />
+        the Yellow River flows into the sea.<br />
+        To see a thousand miles farther,<br />
+        climb one more story of the tower.
+      </p>
+    </div>
+
+    <div class="notes">
+      <h3>注解 · Notes</h3>
+      <p>
+        王之涣（688–742），盛唐著名边塞诗人。此诗仅二十字，却以宏阔之景开篇——
+        落日、山脉、大河——最后以一句哲理作结：想看得更远，就要站得更高。
+      </p>
+      <p>
+        Wang Zhihuan (688–742 AD) wrote this at the Stork Tower (鹳雀楼) in present-day
+        Shanxi Province, looking west over the Yellow River toward the setting sun.
+        The final couplet has transcended its geographical origin to become one of the
+        most quoted maxims in Chinese: ambition and perspective require elevation —
+        literal or otherwise.
+      </p>
+      <p>
+        The poem's power is its economy. Four lines. Twenty characters. A complete
+        philosophy of aspiration.
+      </p>
+    </div>
+
+  </article>
+
+</div>
+
+<script src="../../js/views.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const badge = document.getElementById('view-count');
+    const v = getViews('deng-guan-que-lou');
+    badge.textContent = v + ' view' + (v !== 1 ? 's' : '');
+  });
+</script>
+</body>
+</html>

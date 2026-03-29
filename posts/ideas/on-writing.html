@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>On Writing in Silence — chunboblog</title>
+
+  <post-meta
+    id="on-writing"
+    title="On Writing in Silence"
+    author="Chunbo Liu"
+    date="2026-03-28"
+    subject="ideas"
+    custom_subject="Reflection"
+    language="en"
+    template="default"
+  ></post-meta>
+
+  <!-- KaTeX (available in all posts) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles/base.css" />
+  <link rel="stylesheet" href="../../styles/template-default.css" />
+</head>
+<body>
+<div class="page-wrap">
+
+  <a href="ideas.index.html" class="back-link">← Ideas</a>
+
+  <header class="post-header">
+    <h1>On Writing in Silence</h1>
+    <div class="post-meta-line">
+      <span>Chunbo Liu</span>
+      <span class="tag">Reflection</span>
+      <span>2026-03-28</span>
+      <span class="view-badge" id="view-count"></span>
+    </div>
+  </header>
+
+  <article class="post-content">
+
+    <p>
+      I started this blog with a deliberate constraint: no framework, no database, no
+      comment section, no analytics dashboard. Every post is a file. Every file is a page.
+      The whole thing fits in a folder.
+    </p>
+
+    <p>
+      This is not minimalism as aesthetic posture. It is minimalism as necessity — because
+      the moment you add infrastructure, you start maintaining infrastructure. And maintenance
+      is the enemy of writing.
+    </p>
+
+    <div class="pull-quote">
+      "The best tool for writing is one that gets out of the way."
+    </div>
+
+    <h2>The Problem with Platforms</h2>
+
+    <p>
+      I've written on Medium, on Notion, on Ghost, on Substack. Each platform eventually
+      becomes a product decision someone else made. The font changes. The revenue model
+      shifts. The export format is lossy. You are a tenant, not an owner.
+    </p>
+
+    <p>
+      With plain HTML, there is no platform to lose. There is only a file, and a browser
+      that will render it faithfully for the next thirty years.
+    </p>
+
+    <h2>Why Write at All</h2>
+
+    <p>
+      Writing is not documentation. It is not "sharing" in the social media sense. It is
+      a technology for thinking — specifically, for discovering what you actually believe
+      as opposed to what you imagine you believe.
+    </p>
+
+    <p>
+      Most of my beliefs, before I write them down, are incoherent. They are vibes, not
+      arguments. The act of writing forces each claim into a sentence, each sentence into
+      a paragraph, each paragraph into a position that could be wrong. This is uncomfortable.
+      It is also the only useful thing.
+    </p>
+
+    <h2>Silence as Feature</h2>
+
+    <p>
+      There are no comments here. No likes, no shares, no view counts visible to anyone
+      but me. This is intentional. Feedback loops on public writing tend to optimize for
+      the wrong things: controversy, relatability, simplicity, affect.
+    </p>
+
+    <p>
+      Writing without an audience changes what you write. It makes you honest about
+      whether the sentence is actually good, rather than whether it will be well-received.
+    </p>
+
+    <blockquote>
+      "Write for yourself. If others find it useful, that is a bonus."
+    </blockquote>
+
+    <p>
+      I don't know if this blog will ever have readers. I write it anyway, because the
+      alternative — not writing — is worse. The thinking doesn't happen without the writing.
+      The files accumulate quietly. That is enough.
+    </p>
+
+    <div class="post-tags">
+      <span class="post-tag">writing</span>
+      <span class="post-tag">reflection</span>
+      <span class="post-tag">tools</span>
+    </div>
+
+  </article>
+
+</div>
+
+<script src="../../js/views.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const badge = document.getElementById('view-count');
+    const v = getViews('on-writing');
+    badge.textContent = v + ' view' + (v !== 1 ? 's' : '');
+  });
+</script>
+</body>
+</html>

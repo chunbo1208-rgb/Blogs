@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cantor's Diagonal Argument — chunboblog</title>
+
+  <post-meta
+    id="cantor-diagonal"
+    title="Cantor's Diagonal Argument"
+    author="Chunbo Liu"
+    date="2026-03-28"
+    subject="math"
+    custom_subject="Set Theory"
+    language="en"
+    template="math"
+  ></post-meta>
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false}
+      ]
+    });"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles/base.css" />
+  <link rel="stylesheet" href="../../styles/template-math.css" />
+</head>
+<body>
+<div class="page-wrap">
+
+  <a href="math.index.html" class="back-link">← Math</a>
+
+  <header class="post-header">
+    <h1>Cantor's Diagonal Argument</h1>
+    <div class="post-meta-line">
+      <span>Chunbo Liu</span>
+      <span class="tag">Set Theory</span>
+      <span class="tag">Infinity</span>
+      <span>2026-03-28</span>
+      <span class="view-badge" id="view-count"></span>
+    </div>
+  </header>
+
+  <article class="post-content">
+
+    <p>
+      In 1891, Georg Cantor published a two-page proof that shattered the naïve idea of
+      infinity as a single, uniform thing. He showed that there are strictly more real
+      numbers than natural numbers — that some infinities are larger than others.
+      The weapon he used was breathtakingly simple: a diagonal.
+    </p>
+
+    <h2>Two Kinds of Infinite</h2>
+
+    <div class="definition">
+      A set $S$ is <strong>countably infinite</strong> if there exists a bijection
+      $f: \mathbb{N} \to S$. Otherwise, if $S$ is infinite but not countable, it is
+      <strong>uncountably infinite</strong>.
+    </div>
+
+    <p>
+      The integers $\mathbb{Z}$ and rationals $\mathbb{Q}$ are both countable —
+      you can list them all in a sequence (with some cleverness). The question Cantor
+      asked: what about $\mathbb{R}$?
+    </p>
+
+    <h2>The Theorem</h2>
+
+    <div class="theorem">
+      The set of real numbers in the interval $(0, 1)$ is uncountable. In particular,
+      $|\mathbb{R}| > |\mathbb{N}|$.
+    </div>
+
+    <div class="proof">
+      <p>
+        Suppose, for contradiction, that $(0,1)$ is countable. Then there exists a
+        surjection $f: \mathbb{N} \to (0,1)$, which we can list as:
+      </p>
+      $$\begin{array}{c|cccccc}
+        n & d_1 & d_2 & d_3 & d_4 & \cdots \\
+        \hline
+        f(1) = & \mathbf{a_{11}} & a_{12} & a_{13} & a_{14} & \cdots \\
+        f(2) = & a_{21} & \mathbf{a_{22}} & a_{23} & a_{24} & \cdots \\
+        f(3) = & a_{31} & a_{32} & \mathbf{a_{33}} & a_{34} & \cdots \\
+        f(4) = & a_{41} & a_{42} & a_{43} & \mathbf{a_{44}} & \cdots \\
+        \vdots & & & & & \ddots
+      \end{array}$$
+      <p>
+        where $a_{ij}$ is the $j$-th decimal digit of $f(i)$.
+        Now construct a new number $x = 0.b_1 b_2 b_3 \cdots$ where:
+      </p>
+      $$b_i = \begin{cases} 2 & \text{if } a_{ii} \neq 2 \\ 3 & \text{if } a_{ii} = 2 \end{cases}$$
+      <p>
+        Then $x \in (0,1)$, but $x \neq f(n)$ for any $n \in \mathbb{N}$:
+        $x$ differs from $f(n)$ in the $n$-th decimal place by construction.
+        This contradicts the assumption that $f$ is surjective.
+      </p>
+      <p>
+        Therefore no such surjection exists, and $(0,1)$ is uncountable. $\square$
+      </p>
+      <span class="qed"></span>
+    </div>
+
+    <h2>What the Diagonal Actually Does</h2>
+
+    <p>
+      The argument is not about finding one number that's missing — it's about showing that
+      <em>any</em> proposed list must be incomplete. Whatever enumeration you provide, the
+      diagonal construction hands you a number guaranteed to not be on it.
+    </p>
+
+    <p>
+      This is why the argument is so powerful: it doesn't attack a specific list. It attacks
+      the very concept of a complete list of reals.
+    </p>
+
+    <h2>Cantor's Hierarchy</h2>
+
+    <p>
+      Define the <strong>cardinality</strong> of a set $S$ as $|S|$. Cantor proved:
+    </p>
+
+    $$|\mathbb{N}| = \aleph_0 < |\mathbb{R}| = 2^{\aleph_0} = \mathfrak{c}$$
+
+    <p>
+      And more generally, for any set $S$, the power set $\mathcal{P}(S)$ satisfies
+      $|\mathcal{P}(S)| > |S|$. This generates an infinite tower of infinities:
+    </p>
+
+    $$\aleph_0 < 2^{\aleph_0} < 2^{2^{\aleph_0}} < \cdots$$
+
+    <blockquote>
+      "The essence of mathematics lies in its freedom." — Georg Cantor
+    </blockquote>
+
+    <p>
+      Cantor faced fierce opposition from contemporaries including Kronecker, who called his
+      work "a corruption of youth." Today, the diagonal argument is considered one of the
+      most elegant proofs in all of mathematics — a model of how a single idea can permanently
+      restructure our understanding of the infinite.
+    </p>
+
+  </article>
+
+</div>
+
+<script src="../../js/views.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const badge = document.getElementById('view-count');
+    const v = getViews('cantor-diagonal');
+    badge.textContent = v + ' view' + (v !== 1 ? 's' : '');
+  });
+</script>
+</body>
+</html>

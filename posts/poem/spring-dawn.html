@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spring Dawn — chunboblog</title>
+
+  <post-meta
+    id="spring-dawn"
+    title="Spring Dawn"
+    author="Meng Haoran"
+    date="2026-03-26"
+    subject="poem"
+    custom_subject="Tang Poetry"
+    language="en"
+    template="poem"
+  ></post-meta>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles/base.css" />
+  <link rel="stylesheet" href="../../styles/template-poem.css" />
+</head>
+<body>
+<div class="page-wrap">
+
+  <a href="poem.index.html" class="back-link">← Poem</a>
+
+  <header class="post-header">
+    <h1>Spring Dawn <span style="font-size:0.6em;color:var(--muted);font-weight:400">春晓</span></h1>
+    <div class="post-meta-line">
+      <span>Meng Haoran · 孟浩然</span>
+      <span class="tag">Tang Poetry</span>
+      <span class="tag">en</span>
+      <span>2026-03-26</span>
+      <span class="view-badge" id="view-count"></span>
+    </div>
+  </header>
+
+  <article class="post-content">
+
+    <div class="poem-body" style="font-size:1.3rem; letter-spacing:0.2em;">
+      <p>春眠不觉晓，</p>
+      <p>处处闻啼鸟。</p>
+      <p>夜来风雨声，</p>
+      <p>花落知多少。</p>
+    </div>
+
+    <hr />
+
+    <div class="translation">
+      <h3>Translation</h3>
+      <p>
+        Spring sleep, unaware of dawn —<br />
+        everywhere the birds cry out.<br />
+        Last night, the wind and rain —<br />
+        how many blossoms fell?
+      </p>
+    </div>
+
+    <div class="notes">
+      <h3>Notes</h3>
+      <p>
+        Meng Haoran (孟浩然, 689–740 AD) was a close contemporary of Wang Wei and Li Bai.
+        This <em>jueju</em> captures the hazy moment of waking in spring — the reluctance to
+        leave sleep, the sudden awareness of birdsong, and the retrospective unease about
+        last night's storm.
+      </p>
+      <p>
+        The final line — "how many blossoms fell?" — is one of the most iconic closings in
+        Chinese poetry. It asks a question that can never be answered, transforming an
+        ordinary morning into a meditation on impermanence.
+      </p>
+    </div>
+
+  </article>
+
+</div>
+
+<script src="../../js/views.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const badge = document.getElementById('view-count');
+    const v = getViews('spring-dawn');
+    badge.textContent = v + ' view' + (v !== 1 ? 's' : '');
+  });
+</script>
+</body>
+</html>
