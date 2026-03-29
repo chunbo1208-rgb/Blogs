@@ -26,6 +26,17 @@ window.POSTS = [
     "template": "poem"
   },
   {
+    "id": "春日迟迟",
+    "path": "posts/poem/春日迟迟.html",
+    "title": "春日迟迟",
+    "author": "怜梢",
+    "date": "2026-03-29",
+    "subject": "poem",
+    "custom_subject": "诗",
+    "language": "zh",
+    "template": "poem"
+  },
+  {
     "id": "spring-dawn",
     "path": "posts/poem/spring-dawn.html",
     "title": "Spring Dawn",

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>春日迟迟 — chunboblog</title>
+
+  <post-meta
+    id="春日迟迟"
+    title="春日迟迟"
+    author="怜梢"
+    date="2026-03-29"
+    subject="poem"
+    custom_subject="诗"
+    language="zh"
+    template="poem"
+  ></post-meta>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <!-- Ma Shan Zheng = 行楷 style; Noto Serif SC for meta text -->
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles/base.css" />
+  <link rel="stylesheet" href="../../styles/template-poem.css" />
+
+  <style>
+    .xingkai-poem {
+      font-family: 'Ma Shan Zheng', cursive;
+      text-align: center;
+      max-width: 360px;
+      margin: 2.5rem auto 1rem;
+    }
+
+    .stanza {
+      margin-bottom: 2rem;
+    }
+
+    .lead-in {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      opacity: 0.75;
+      margin-bottom: 0.25em;
+    }
+    .lead-in .dash { opacity: 0.4; }
+
+    .lines p {
+      margin: 0;
+      font-size: 1.35rem;
+      letter-spacing: 0.2em;
+      line-height: 1.75;
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <a href="poem.index.html" class="back-link">← 诗</a>
+
+  <header class="post-header">
+    <h1>春日迟迟</h1>
+    <div class="post-meta-line">
+      <span>怜梢</span>
+      <span class="tag">诗</span>
+      <span class="tag">中文</span>
+      <span>2026-03-29</span>
+      <span class="view-badge" id="view-count"></span>
+    </div>
+  </header>
+
+  <article class="post-content">
+
+    <div class="xingkai-poem">
+
+      <div class="stanza">
+        <div class="lead-in">忽见<span class="dash">——</span></div>
+        <div class="lines">
+          <p>天高地迥泛轻雾</p>
+          <p>白鹤衔来梦几株</p>
+        </div>
+      </div>
+
+      <div class="stanza">
+        <div class="lead-in">应知<span class="dash">——</span></div>
+        <div class="lines">
+          <p>天育大梦与金乌</p>
+          <p>亦允小舟泊烟渚</p>
+        </div>
+      </div>
+
+      <div class="stanza">
+        <div class="lead-in">原来<span class="dash">——</span></div>
+        <div class="lines">
+          <p>平生俭行懒赢输</p>
+          <p>由是不如便不如</p>
+        </div>
+      </div>
+
+      <div class="stanza">
+        <div class="lead-in">只道<span class="dash">——</span></div>
+        <div class="lines">
+          <p>人生三万场疏忽</p>
+          <p>伴与春茗细细读</p>
+        </div>
+      </div>
+
+
+    </div>
+
+    <hr />
+
+  </article>
+
+</div>
+
+<script src="../../js/views.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const badge = document.getElementById('view-count');
+    const v = getViews('春日迟迟');
+    badge.textContent = v + ' 次阅读';
+  });
+</script>
+</body>
+</html>
