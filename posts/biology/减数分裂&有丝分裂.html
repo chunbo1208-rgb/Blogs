@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>减数分裂&有丝分裂 — chunboblog</title>
+
+  <post-meta
+    id="减数分裂&有丝分裂"
+    title="减数分裂&有丝分裂"
+    author="Chunbo Liu"
+    date="2026-03-30"
+    subject="biology"
+    custom_subject="课内生物"
+    language="en"
+    template="science"
+  ></post-meta>
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles/base.css" />
+  <link rel="stylesheet" href="../../styles/template-science.css" />
+
+  <style>
+    /* ── 题目卡片 ─────────────────────────── */
+    .question-card {
+      --qc-accent:        #2c5f2e;
+      --qc-accent-light:  #e8f0e8;
+      --qc-border:        #d8d0c4;
+      --qc-answer-bg:     #fff8e1;
+      --qc-answer-border: #f9a825;
+      --qc-table-head:    #2c5f2e;
+      --qc-table-alt:     #f4f8f4;
+      background: #fff;
+      border: 1px solid var(--qc-border);
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.08);
+      margin: 0 0 36px;
+      overflow: hidden;
+    }
+    .question-card-header {
+      background: var(--qc-accent);
+      color: #fff;
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .q-number {
+      font-size: 1rem;
+      font-weight: 700;
+      background: rgba(255,255,255,.2);
+      border-radius: 6px;
+      padding: 2px 10px;
+    }
+    .q-tag { font-size: .78rem; opacity: .85; letter-spacing: .04em; }
+    .question-body { padding: 28px 28px 0; }
+    .q-stem { font-size: 1rem; line-height: 2; margin-bottom: 20px; }
+    .q-stem strong { color: var(--qc-accent); }
+    .qc-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0 24px;
+      font-size: .95rem;
+    }
+    .qc-table th {
+      background: var(--qc-table-head);
+      color: #fff;
+      padding: 10px 18px;
+      text-align: center;
+      font-weight: 500;
+      font-size: .88rem;
+    }
+    .qc-table td {
+      padding: 10px 18px;
+      text-align: center;
+      border-bottom: 1px solid var(--qc-border);
+    }
+    .qc-table tr:nth-child(even) td { background: var(--qc-table-alt); }
+    .qc-table tr:last-child td { border-bottom: none; }
+    .q-options {
+      padding: 0 28px 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .option {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px 16px;
+      border: 1px solid var(--qc-border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all .18s ease;
+      background: #fff;
+    }
+    .option:hover    { border-color: var(--qc-accent); background: var(--qc-accent-light); }
+    .option.selected { border-color: var(--qc-accent); background: var(--qc-accent-light); }
+    .option.correct  { border-color: #2e7d32; background: #e8f5e9; }
+    .option.wrong    { border-color: #c62828; background: #ffebee; }
+    .opt-label {
+      flex-shrink: 0;
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: var(--qc-border);
+      color: #555;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .82rem; font-weight: 600;
+      transition: all .18s;
+    }
+    .option.selected .opt-label,
+    .option:hover    .opt-label { background: var(--qc-accent); color: #fff; }
+    .option.correct  .opt-label { background: #2e7d32; color: #fff; }
+    .option.wrong    .opt-label { background: #c62828; color: #fff; }
+    .opt-text { font-size: .93rem; line-height: 1.7; }
+    .answer-section {
+      margin: 0 28px 28px;
+      padding: 16px 20px;
+      background: var(--qc-answer-bg);
+      border-left: 4px solid var(--qc-answer-border);
+      border-radius: 0 8px 8px 0;
+      display: none;
+    }
+    .answer-section.visible { display: block; }
+    .answer-label {
+      font-size: .8rem;
+      font-weight: 600;
+      color: #f57f17;
+      letter-spacing: .05em;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+    .answer-text { font-size: .92rem; line-height: 1.85; }
+    .check-btn {
+      display: block;
+      margin: 0 28px 28px;
+      padding: 10px 28px;
+      background: var(--qc-accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: .9rem;
+      cursor: pointer;
+      letter-spacing: .05em;
+      transition: opacity .15s;
+    }
+    .check-btn:hover { opacity: .85; }
+    @media (max-width: 560px) {
+      .q-options { grid-template-columns: 1fr; }
+      .question-body, .q-options, .answer-section, .check-btn {
+        padding-left: 18px; padding-right: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <a href="biology.index.html" class="back-link">← Biology</a>
+
+  <header class="post-header" data-subject="课内生物">
+    <h1>减数分裂&有丝分裂 课内的理解</h1>
+    <div class="post-meta-line">
+      <span>Chunbo Liu</span>
+      <span class="tag">课内生物</span>
+      <span>2026-03-27</span>
+      <span class="view-badge" id="view-count"></span>
+    </div>
+  </header>
+
+  <article class="post-content">
+
+    <div class="abstract">
+      <p>
+        编者因学习了课内的减数分裂，以及做了一些（不多）的相关题目后，想总结一下有关题目的类型，并且整理一些优秀的题目。
+        顺便吐槽一下课内的生物，并且对细胞分裂进行更深入的研究。
+      </p>
+    </div>
+
+    <h1>课内的相关陈述</h1>
+
+    <h3>有丝分裂</h3>
+    <h4>以植物细胞为例</h4>
+    <ul>
+      <li><strong>分裂间期：</strong>分裂间期为分裂期进行活跃的物质准备，完成 DNA 分子的复制和有关蛋白质的合成，同时细胞有适度的生长。分裂间期结束后，开始进行有丝分裂。</li>
+      <li><strong>前期：</strong>染色质丝螺旋缠绕，缩短变粗，成为染色体。每条染色体包括两条并列的姐妹染色单体，这两条染色单体由一个共同的着丝粒连接着。核仁逐渐解体，核膜逐渐消失。从细胞的两极发出纺锤丝，形成一个梭形的纺锤体。</li>
+      <li><strong>中期：</strong>每条染色体的着丝粒两侧，都有纺锤丝附着在上面，纺锤丝牵引着染色体运动，使每条染色体的着丝粒排列在细胞中央的一个平面上。这个平面与纺锤体的中轴相垂直，类似于地球上赤道的位置，称为赤道板。</li>
+      <li><strong>后期：</strong>每个着丝粒分裂成两个，姐妹染色单体分开，成为两条染色体，由纺锤丝牵引着分别向细胞的两极移动，结果是细胞的两极各有一套染色体。这两套染色体的形态和数目完全相同，每一套染色体与分裂前亲代细胞中的染色体的形态和数目也相同。</li>
+      <li><strong>末期：</strong>当这两套染色体分别到达细胞的两极以后，每条染色体逐渐变成细长而盘曲的染色质丝。同时，纺锤丝逐渐消失，出现了新的核膜和核仁，形成两个新的细胞核。这时候，在赤道板的位置出现一个细胞板，细胞板逐渐扩展，形成新的细胞壁。</li>
+    </ul>
+
+    <h4>动物细胞</h4>
+    <p>动物细胞有丝分裂的过程，与植物细胞的基本相同。不同的特点是：第一，动物细胞有一对中心粒构成的中心体，中心粒在间期倍增，成为两组。进入分裂期后，两组中心粒分别移向细胞两极。在这两组中心粒的周围，发出大量放射状的星射线，两组中心粒之间的星射线形成了纺锤体。第二，动物细胞分裂的末期不形成细胞板，而是细胞膜从细胞的中部向内凹陷，最后把细胞缢裂成两部分，每部分都含有一个细胞核。这样，一个细胞就分裂成了两个子细胞。</p>
+
+    <h4>有丝分裂的意义（黑体字）</h4>
+    <p>将亲代细胞的染色体经过复制（关键是DNA 的复制）之后，精确地平均分配到两个子细胞中。由于染色体上有遗传物质DNA，因而在细胞的亲代和子代之间保持了遗传的稳定性。</p>
+
+    <h3>减数分裂</h3>
+    <h4>精子</h4>
+    <ul>
+      <li><strong>减数分裂I（初级精母细胞）：</strong>同源染色体配对——联会；四分体中的非姐妹染色单体可以发生互换；同源染色体分离，分别移向细胞的两极。</li>
+      <li><strong>减数分裂II（次级精母细胞）：</strong>每条染色体的着丝粒分裂，姐妹染色单体分开，分别移向细胞的两极。</li>
+    </ul>
+    <p>减数分裂过程中染色体数目的减半发生在减数分裂Ⅰ。减数分裂Ⅰ与减数分裂Ⅱ之间通常没有间期，或者间期时间很短，染色体不再复制。减数分裂后，精细胞要经过复杂的变形才能成为精子。精子呈蝌蚪状，分头部和尾部，头部含有细胞核，尾长，能够摆动。</p>
+
+    <h4>卵细胞</h4>
+    <p>卵细胞的形成过程与精子的基本相同。首先，在减数分裂前的间期，卵原细胞增大，染色体复制，卵原细胞成为初级卵母细胞。然后，初级卵母细胞经过减数分裂Ⅰ和减数分裂Ⅱ，形成卵细胞。卵细胞与精子形成过程的主要区别是：初级卵母细胞经过减数分裂Ⅰ进行不均等分裂，形成大小不同的两个细胞，大的叫作次级卵母细胞，小的叫作极体。次级卵母细胞经过减数分裂Ⅱ也进行不均等分裂，形成一个大的卵细胞和一个小的极体。在减数分裂Ⅰ形成的极体又分裂为两个极体。这样，一个初级卵母细胞经过减数分裂，就形成了一个卵细胞和三个极体。卵细胞和极体中都含有数目减半的染色体。不久，三个极体都退化消失，结果是一个卵原细胞经过减数分裂，只形成一个卵细胞。与精子的形成不同，卵细胞的形成不需要变形。</p>
+
+    <h2>有趣（无聊）的题目</h2>
+
+    
+    <!-- 第 1 题 -->
+    <div class="question-card">
+      <div class="question-card-header">
+        <span class="q-number">第 1 题</span>
+        <span class="q-tag">减数分裂 · DNA 与染色体数量分析</span>
+      </div>
+      <div class="question-body">
+        <p class="q-stem">
+          某科研小组对果蝇（<strong>$2n = 8$</strong>）的精巢切片进行显微观察，测定不同类型细胞$(a-c)$中的染色体数量，
+          结果如下表。下列分析<strong>不正确</strong>的是
+        </p>
+        <table class="qc-table">
+          <thead>
+            <tr>
+              <th>细胞时期</th>
+              <th>$a$</th>
+              <th>$b$</th>
+              <th>$c$</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>染色体数量</td>
+              <td>4</td>
+              <td>8</td>
+              <td>8</td>
+            </tr>
+            <tr>
+              <td>核 DNA 数量</td>
+              <td>8</td>
+              <td>8</td>
+              <td>16</td>
+            </tr>
+          </tbody>
+        </table>
+        
+      </div>
+
+      <div class="q-options" id="q1-options">
+        <div class="option" onclick="selectOption('q1', 'A', this)">
+          <span class="opt-label">A</span>
+          <span class="opt-text">$a$类型的细胞中一定含有染色单体</span>
+        </div>
+        <div class="option" onclick="selectOption('q1', 'B', this)">
+          <span class="opt-label">B</span>
+          <span class="opt-text">$b$类型细胞中不一定含有同源染色体</span>
+        </div>
+        <div class="option" onclick="selectOption('q1', 'C', this)">
+          <span class="opt-label">C</span>
+          <span class="opt-text">$c$类型的细胞可能发生了同源染色体分离</span>
+        </div>
+        <div class="option" onclick="selectOption('q1', 'D', this)">
+          <span class="opt-label">D</span>
+          <span class="opt-text">$a$类型细胞一定是$c$类型细胞的子细胞</span>
+        </div>
+      </div>
+
+      <button class="check-btn" onclick="checkAnswer('q1', 'D')">查看答案</button>
+
+      <div class="answer-section" id="q1-answer">
+        <div class="answer-label">✦ 答案与解析</div>
+        <div class="answer-text">
+          <strong>正确答案：D</strong><br><br>
+          首先$2n=8$表示正常体细胞应该有4对,8条染色体。<br>
+          分析各时期：<br>
+          • <strong>$a$时期</strong>：染色体数 4，DNA 数 8 → 每条染色体含 2 个 DNA，为<strong>减数第一次分裂后期</strong>阶段，含染色单体。<br>
+          • <strong>$b$时期</strong>：染色体数 8，DNA 数 8 $→$ 每条染色体含 1 个 DNA，着丝点已分裂，处于<strong>减数第二次分裂后期</strong>（染色体暂时加倍）。<br>
+          • <strong>$c$时期</strong>：DNA复制，但染色体还没分裂（或分开）。处于有丝分裂或者MI前期。<br><br>
+          由于$c$可能是有丝分裂的细胞，所以D的陈述有误。
+            <div class="callout note">
+      <span class="callout-icon">ℹ</span>
+      <span>物质准备阶段（有丝分裂间期）蛋白质合成，DNA复制，最终导致的结果就是每个染色体上有两个DNA。</span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 第 2 题 -->
+    <div class="question-card">
+      <div class="question-card-header">
+        <span class="q-number">第 2 题</span>
+        <span class="q-tag">减数分裂 · DNA 分子数计算</span>
+      </div>
+      <div class="question-body">
+        <p class="q-stem">
+          某动物（<strong>2n = 10</strong>）的某细胞在行某种细胞分裂时含有 <strong>10 条染色体
+          和 10 个 DNA 分子</strong>，每条染色单体含有 <strong>1 个 DNA 分子</strong>，
+          且细胞膜开始缢缩则该细胞：
+        </p>
+      </div>
+
+      <div class="q-options" id="q2-options">
+        <div class="option" onclick="selectOption('q2', 'A', this)">
+          <span class="opt-label">A</span>
+          <span class="opt-text">将形成配子或极体</span>
+        </div>
+        <div class="option" onclick="selectOption('q2', 'B', this)">
+          <span class="opt-label">B</span>
+          <span class="opt-text">处于有丝分裂后期</span>
+        </div>
+        <div class="option" onclick="selectOption('q2', 'C', this)">
+          <span class="opt-label">C</span>
+          <span class="opt-text">正在进行 DNA 复制</span>
+        </div>
+        <div class="option" onclick="selectOption('q2', 'D', this)">
+          <span class="opt-label">D</span>
+          <span class="opt-text">正在进行非同源染色体的自由组合</span>
+        </div>
+      </div>
+
+      <button class="check-btn" onclick="checkAnswer('q2', 'A')">查看答案</button>
+
+      <div class="answer-section" id="q2-answer">
+        <div class="answer-label">✦ 答案与解析</div>
+        <div class="answer-text">
+          <strong>正确答案：A</strong><br><br>
+          条件分析：染色体数 = 10 = 2n，且DNA 总数 = 10 → 每条染色单体含 1 个 DNA（着丝点已分裂）。说明处于MII后期。<br><br>
+          • <strong>D</strong>：应处于有丝分裂或者MI前期。<br><br>
+
+          故选 <strong>A</strong>。
+        </div>
+      </div>
+    </div>
+
+    <p>核心就是什么时候DNA复制，什么时候染色体的数量有多少</p>
+
+<script>
+  const _qSelected = {};
+  function selectOption(qid, val, el) {
+    _qSelected[qid] = val;
+    document.querySelectorAll(`#${qid}-options .option`).forEach(o =>
+      o.classList.remove('selected', 'correct', 'wrong')
+    );
+    el.classList.add('selected');
+  }
+  function checkAnswer(qid, correct) {
+    const ans = document.getElementById(`${qid}-answer`);
+    ans.classList.add('visible');
+    const labels = ['A', 'B', 'C', 'D'];
+    document.querySelectorAll(`#${qid}-options .option`).forEach((o, i) => {
+      o.classList.remove('selected');
+      if (labels[i] === correct) o.classList.add('correct');
+      else if (labels[i] === _qSelected[qid] && _qSelected[qid] !== correct) o.classList.add('wrong');
+    });
+    ans.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+</script>
+<script src="../../js/views.js"></script>
+</body>
+</html>

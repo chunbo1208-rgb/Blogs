@@ -89,8 +89,8 @@ No special build step needed. Push to GitHub → Cloudflare Pages auto-deploys. 
 
 - [ ] KV namespace created in Cloudflare Dashboard
 - [ ] KV binding added to Pages project
-- [ ] `functions/api/views.js` written
-- [ ] `js/views.js` updated to async API calls
+- [x] `functions/api/views.js` written
+- [x] `js/views.js` updated to async API calls
 - [ ] Subject index pages updated
-- [ ] `discover.js` updated
+- [x] `discover.js` updated
 - [ ] Deployed and tested

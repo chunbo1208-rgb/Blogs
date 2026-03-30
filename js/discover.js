@@ -141,20 +141,22 @@ function applyLangUI() {
   });
 }
 
-function setLang(lang) {
+async function setLang(lang) {
   currentLang = lang;
   localStorage.setItem('chunboblog:lang', lang);
   const posts = window.POSTS || [];
-  const views = getAllViews();
+  const postIds = posts.map(p => p.id);
+  const views = await getAllViews(postIds);
   applyLangUI();
   renderTodaySection(posts, views);
   renderTopSection(posts, views);
   renderSections(posts);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   const posts = window.POSTS || [];
-  const views = getAllViews();
+  const postIds = posts.map(p => p.id);
+  const views = await getAllViews(postIds);
 
   applyLangUI();
   renderSections(posts);
