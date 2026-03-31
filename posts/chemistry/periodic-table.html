@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Periodic Table: Order in the Elements — chunboblog</title>
+
+  <post-meta
+    id="periodic-table"
+    title="The Periodic Table: Order in the Elements"
+    author="Chunbo Liu"
+    date="2026-03-31"
+    subject="chemistry"
+    custom_subject="Inorganic Chemistry"
+    language="en"
+    template="science"
+  ></post-meta>
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles/base.css" />
+  <link rel="stylesheet" href="../../styles/template-science.css" />
+</head>
+<body>
+<div class="page-wrap">
+
+  <a href="chemistry.index.html" class="back-link">← Chemistry</a>
+
+  <header class="post-header" data-subject="Inorganic Chemistry">
+    <h1>The Periodic Table: Order in the Elements</h1>
+    <div class="post-meta-line">
+      <span>Chunbo Liu</span>
+      <span class="tag">Inorganic Chemistry</span>
+      <span>2026-03-31</span>
+      <span class="view-badge" id="view-count"></span>
+    </div>
+  </header>
+
+  <article class="post-content">
+
+    <div class="abstract">
+      <p>
+        The periodic table organizes all known chemical elements by atomic number,
+        electron configuration, and recurring chemical properties. We explore the
+        logic behind its structure — periods, groups, and blocks — and why Mendeleev's
+        original insight still holds at the frontier of element synthesis.
+      </p>
+    </div>
+
+    <h2>Why a Table?</h2>
+
+    <p>
+      By 1869, 63 elements were known. Dmitri Mendeleev noticed that when elements
+      were arranged by increasing atomic mass, properties repeated at regular intervals —
+      a periodicity. He arranged them in rows (periods) such that elements with similar
+      chemical behavior fell in the same column (group).
+    </p>
+
+    <p>
+      More boldly, he left gaps where no known element fit, predicting their properties
+      from the surrounding elements. The subsequent discovery of gallium (1875),
+      scandium (1879), and germanium (1886) — each matching his predictions closely —
+      was a triumph of the table's predictive power.
+    </p>
+
+    <div class="callout note">
+      <span class="callout-icon">ℹ</span>
+      <span>The modern table orders elements by <strong>atomic number</strong> (protons),
+      not atomic mass. This resolved anomalies like tellurium (Z=52) appearing before
+      iodine (Z=53) despite having greater mass.</span>
+    </div>
+
+    <h2>Structure of the Table</h2>
+
+    <h3>Periods and Electron Shells</h3>
+    <p>
+      Each horizontal row is a <em>period</em>. Moving across a period, one proton
+      and one electron are added at a time. The period number corresponds to the
+      highest principal quantum number $n$ of electrons in that row's ground-state
+      atoms. Period 2 (Li → Ne) fills the $2s$ and $2p$ subshells:
+    </p>
+
+    $$\text{Li: } 1s^2\,2s^1 \quad \longrightarrow \quad \text{Ne: } 1s^2\,2s^2\,2p^6$$
+
+    <h3>Groups and Valence Electrons</h3>
+    <p>
+      Each vertical column is a <em>group</em>. Elements in the same group share the
+      same number of valence electrons and therefore similar chemical behavior.
+      Group 1 (alkali metals) all have one valence electron and react vigorously
+      with water:
+    </p>
+
+    $$2\,\text{Na} + 2\,\text{H}_2\text{O} \;\longrightarrow\; 2\,\text{NaOH} + \text{H}_2\uparrow$$
+
+    <h3>Blocks</h3>
+    <p>The table divides naturally into four blocks based on the subshell being filled:</p>
+
+    <table>
+      <thead>
+        <tr><th>Block</th><th>Subshell</th><th>Groups</th><th>Example</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>s-block</td><td>s</td><td>1–2 (+ He)</td><td>Na, Mg</td></tr>
+        <tr><td>p-block</td><td>p</td><td>13–18</td><td>C, N, Cl, Ne</td></tr>
+        <tr><td>d-block</td><td>d</td><td>3–12</td><td>Fe, Cu, Zn</td></tr>
+        <tr><td>f-block</td><td>f</td><td>lanthanides, actinides</td><td>Ce, U</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Periodic Trends</h2>
+
+    <p>
+      Because nuclear charge increases left-to-right across a period while electrons
+      fill the same shell, several properties change predictably:
+    </p>
+
+    <div class="callout key">
+      <span class="callout-icon">⚡</span>
+      <span><strong>Atomic radius</strong> decreases across a period (more protons pull
+      electrons closer) and increases down a group (new shells are farther from
+      the nucleus).</span>
+    </div>
+
+    <div class="callout key">
+      <span class="callout-icon">⚡</span>
+      <span><strong>Ionization energy</strong> — the energy to remove an electron —
+      generally increases across a period and decreases down a group, inversely
+      tracking atomic radius.</span>
+    </div>
+
+    <div class="callout key">
+      <span class="callout-icon">⚡</span>
+      <span><strong>Electronegativity</strong> (Pauling scale) peaks at fluorine
+      ($\chi = 3.98$), the most electronegative element. It increases across
+      periods and decreases down groups.</span>
+    </div>
+
+    <h2>The Frontier: Superheavy Elements</h2>
+
+    <p>
+      Element 118, oganesson (Og), currently sits at the bottom-right of the table.
+      Synthesized in 2002 by bombarding californium-249 with calcium-48 ions, only
+      a handful of atoms have ever been produced. Its half-life is roughly 0.7 ms.
+    </p>
+
+    $${}^{249}_{98}\text{Cf} + {}^{48}_{20}\text{Ca} \;\longrightarrow\; {}^{294}_{118}\text{Og} + 3\,n$$
+
+    <p>
+      Relativistic effects — arising because inner electrons near such a heavy nucleus
+      travel at a significant fraction of $c$ — distort the chemical behavior of
+      superheavy elements in ways that challenge our group-based predictions.
+      The table's elegant order meets its limits here, yet those limits are precisely
+      what makes the frontier so interesting.
+    </p>
+
+    <div class="callout warning">
+      <span class="callout-icon">⚠</span>
+      <span>Relativistic contraction of the 6s orbital in gold gives it its distinctive
+      yellow color and exceptional corrosion resistance — properties that a
+      non-relativistic calculation would entirely miss.</span>
+    </div>
+
+  </article>
+
+</div>
+
+<script src="../../js/views.js"></script>
+</body>
+</html>

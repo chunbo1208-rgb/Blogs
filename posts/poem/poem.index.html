@@ -56,8 +56,8 @@
 <script src="../../js/views.js"></script>
 <script>
 (async () => {
-  const views = getAllViews();
   const poems = (window.POSTS || []).filter(p => p.subject === 'poem').sort((a, b) => b.date.localeCompare(a.date));
+  const views = await getAllViews(poems.map(p => p.id));
   const list = document.getElementById('post-list');
 
   if (poems.length === 0) {

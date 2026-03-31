@@ -3,6 +3,17 @@
 
 window.POSTS = [
   {
+    "id": "periodic-table",
+    "path": "posts/chemistry/periodic-table.html",
+    "title": "The Periodic Table: Order in the Elements",
+    "author": "Chunbo Liu",
+    "date": "2026-03-31",
+    "subject": "chemistry",
+    "custom_subject": "Inorganic Chemistry",
+    "language": "en",
+    "template": "science"
+  },
+  {
     "id": "eulers-identity",
     "path": "posts/math/eulers-identity.html",
     "title": "Euler's Identity: The Most Beautiful Equation",

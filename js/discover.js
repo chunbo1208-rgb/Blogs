@@ -26,6 +26,7 @@ const SUBJECT_META = {
   math:    { label: { en: 'Math',    zh: '数学' }, emoji: '∑',   color: '#E8F0F8', accent: '#2A6099', path: 'posts/math/math.index.html' },
   biology: { label: { en: 'Biology', zh: '生物' }, emoji: '🧬',  color: '#FFF0F0', accent: '#994444', path: 'posts/biology/biology.index.html' },
   ideas:   { label: { en: 'Ideas',   zh: '随想' }, emoji: '💡',  color: '#F3ECFF', accent: '#6644AA', path: 'posts/ideas/ideas.index.html' },
+  chemistry: { label: { en: 'Chemistry', zh: '化学' }, emoji: '🧪', color: '#F5EEF8', accent: '#7D3C98', path: 'posts/chemistry/chemistry.index.html' },
   science: { label: { en: 'Science', zh: '科学' }, emoji: '⚗',   color: '#E8F5EE', accent: '#2A7A4A', path: 'posts/science/science.index.html' },
 };
 

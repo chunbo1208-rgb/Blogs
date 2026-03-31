@@ -44,8 +44,8 @@
 <script src="../../js/views.js"></script>
 <script>
 (async () => {
-  const views = getAllViews();
   const items = (window.POSTS || []).filter(p => p.subject === 'math').sort((a,b) => b.date.localeCompare(a.date));
+  const views = await getAllViews(items.map(p => p.id));
   const list = document.getElementById('post-list');
   if (!items.length) { list.innerHTML = '<li class="empty">No posts yet.</li>'; return; }
   list.innerHTML = items.map(p => {
