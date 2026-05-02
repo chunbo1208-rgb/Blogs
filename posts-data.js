@@ -11,7 +11,24 @@ window.POSTS = [
     "subject": "chemistry",
     "custom_subject": "Inorganic Chemistry",
     "language": "en",
-    "template": "science"
+    "template": "science",
+    "kind": "note",
+    "description": "",
+    "tags": []
+  },
+  {
+    "id": "减数分裂&有丝分裂",
+    "path": "posts/biology/减数分裂&有丝分裂.html",
+    "title": "减数分裂&有丝分裂",
+    "author": "Chunbo Liu",
+    "date": "2026-03-30",
+    "subject": "biology",
+    "custom_subject": "课内生物",
+    "language": "en",
+    "template": "science",
+    "kind": "note",
+    "description": "",
+    "tags": []
   },
   {
     "id": "eulers-identity",
@@ -22,7 +39,10 @@ window.POSTS = [
     "subject": "math",
     "custom_subject": "Analysis",
     "language": "en",
-    "template": "math"
+    "template": "math",
+    "kind": "note",
+    "description": "",
+    "tags": []
   },
   {
     "id": "春日迟迟",
@@ -33,7 +53,10 @@ window.POSTS = [
     "subject": "poem",
     "custom_subject": "诗",
     "language": "zh",
-    "template": "poem"
+    "template": "poem",
+    "kind": "poem",
+    "description": "",
+    "tags": []
   },
   {
     "id": "deng-guan-que-lou",
@@ -44,7 +67,10 @@ window.POSTS = [
     "subject": "poem",
     "custom_subject": "唐诗",
     "language": "zh",
-    "template": "poem"
+    "template": "poem",
+    "kind": "poem",
+    "description": "",
+    "tags": []
   },
   {
     "id": "jing-ye-si",
@@ -55,7 +81,10 @@ window.POSTS = [
     "subject": "poem",
     "custom_subject": "唐诗",
     "language": "zh",
-    "template": "poem"
+    "template": "poem",
+    "kind": "poem",
+    "description": "",
+    "tags": []
   },
   {
     "id": "on-writing",
@@ -66,7 +95,10 @@ window.POSTS = [
     "subject": "ideas",
     "custom_subject": "Reflection",
     "language": "en",
-    "template": "default"
+    "template": "default",
+    "kind": "essay",
+    "description": "",
+    "tags": []
   },
   {
     "id": "cantor-diagonal",
@@ -77,7 +109,10 @@ window.POSTS = [
     "subject": "math",
     "custom_subject": "Set Theory",
     "language": "en",
-    "template": "math"
+    "template": "math",
+    "kind": "note",
+    "description": "",
+    "tags": []
   },
   {
     "id": "cell-division",
@@ -88,7 +123,10 @@ window.POSTS = [
     "subject": "biology",
     "custom_subject": "Cell Biology",
     "language": "en",
-    "template": "science"
+    "template": "science",
+    "kind": "note",
+    "description": "",
+    "tags": []
   },
   {
     "id": "on-reading",
@@ -99,7 +137,10 @@ window.POSTS = [
     "subject": "ideas",
     "custom_subject": "Reflection",
     "language": "en",
-    "template": "default"
+    "template": "default",
+    "kind": "essay",
+    "description": "",
+    "tags": []
   },
   {
     "id": "moonlit-night",
@@ -110,7 +151,10 @@ window.POSTS = [
     "subject": "poem",
     "custom_subject": "Tang Poetry",
     "language": "en",
-    "template": "poem"
+    "template": "poem",
+    "kind": "poem",
+    "description": "",
+    "tags": []
   },
   {
     "id": "dna-replication",
@@ -121,7 +165,10 @@ window.POSTS = [
     "subject": "biology",
     "custom_subject": "Molecular Biology",
     "language": "en",
-    "template": "science"
+    "template": "science",
+    "kind": "note",
+    "description": "",
+    "tags": []
   },
   {
     "id": "spring-dawn",
@@ -132,7 +179,9 @@ window.POSTS = [
     "subject": "poem",
     "custom_subject": "Tang Poetry",
     "language": "en",
-    "template": "poem"
-  },
-  
+    "template": "poem",
+    "kind": "poem",
+    "description": "",
+    "tags": []
+  }
 ];

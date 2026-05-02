@@ -24,6 +24,19 @@ function attr(tag, name) {
   return m ? m[1] : '';
 }
 
+function listAttr(tag, name) {
+  return attr(tag, name)
+    .split(',')
+    .map(item => item.trim())
+    .filter(Boolean);
+}
+
+function kindFromSubject(subject) {
+  if (subject === 'poem') return 'poem';
+  if (subject === 'ideas') return 'essay';
+  return 'note';
+}
+
 function parsePost(filePath) {
   const html  = fs.readFileSync(filePath, 'utf8');
   const match = html.match(/<post-meta([\s\S]*?)>/);
@@ -41,6 +54,9 @@ function parsePost(filePath) {
     custom_subject: attr(tag, 'custom_subject'),
     language:       attr(tag, 'language'),
     template:       attr(tag, 'template'),
+    kind:           attr(tag, 'kind') || kindFromSubject(attr(tag, 'subject')),
+    description:    attr(tag, 'description'),
+    tags:           listAttr(tag, 'tags'),
   };
 }
 

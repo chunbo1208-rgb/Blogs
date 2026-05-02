@@ -1,13 +1,25 @@
-// views.js — global view counting via Cloudflare KV API
+// views.js - global view counting via the /api/views endpoint.
+
+const VIEW_CACHE_PREFIX = 'views.';
+
+function localViewCount(postId) {
+  return Number(localStorage.getItem(`${VIEW_CACHE_PREFIX}${postId}`) || 0);
+}
+
+function setLocalViewCount(postId, count) {
+  localStorage.setItem(`${VIEW_CACHE_PREFIX}${postId}`, String(count));
+}
 
 async function recordView(postId) {
   try {
     const res = await fetch(`/api/views?id=${encodeURIComponent(postId)}`, { method: 'POST' });
-    if (!res.ok) return 0;
+    if (!res.ok) throw new Error('view api unavailable');
     const data = await res.json();
     return data.views || 0;
   } catch {
-    return 0;
+    const next = localViewCount(postId) + 1;
+    setLocalViewCount(postId, next);
+    return next;
   }
 }
 
@@ -16,10 +28,10 @@ async function getAllViews(postIds) {
   try {
     const ids = postIds.map(encodeURIComponent).join(',');
     const res = await fetch(`/api/views?ids=${ids}`);
-    if (!res.ok) return {};
+    if (!res.ok) throw new Error('view api unavailable');
     return await res.json();
   } catch {
-    return {};
+    return Object.fromEntries(postIds.map(id => [id, localViewCount(id)]));
   }
 }
 
@@ -30,6 +42,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const postId = meta.getAttribute('id') || window.location.pathname.split('/').pop().replace('.html', '');
     const count = await recordView(postId);
     const badge = document.getElementById('view-count');
-    if (badge) badge.textContent = count + ' view' + (count !== 1 ? 's' : '');
+    if (badge) badge.textContent = count + ' view' + (count === 1 ? '' : 's');
   }
 });
